@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "naive-ui": "^2.35.0"
+  },
+  "dependencies": {
+    "vue-router": "^4.2.5"
   }
 }

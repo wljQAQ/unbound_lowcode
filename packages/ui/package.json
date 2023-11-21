@@ -12,6 +12,7 @@
     "naive-ui": "^2.35.0"
   },
   "dependencies": {
-    "vue-router": "^4.2.5"
+    "vue-router": "^4.2.5",
+    "@unbound_lowcode/shared": "workspace:*"
   }
 }

@@ -16,12 +16,16 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "preserve",
+    "declaration": true,
 
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "@unbound_lowcode/*": ["packages/*"]
+    }
   },
   "include": ["packages"],
   "exclude": ["node_modules"]

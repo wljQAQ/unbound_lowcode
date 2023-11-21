@@ -15,6 +15,9 @@ importers:
         specifier: ^3.3.8
         version: 3.3.8(typescript@5.2.2)
     devDependencies:
+      '@iconify-json/mdi':
+        specifier: ^1.1.55
+        version: 1.1.55
       '@types/node':
         specifier: ^20.9.2
         version: 20.9.2
@@ -31,8 +34,13 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0(@types/node@20.9.2)
 
+  packages/shared: {}
+
   packages/ui:
     dependencies:
+      '@unbound_lowcode/shared':
+        specifier: workspace:*
+        version: link:../shared
       vue-router:
         specifier: ^4.2.5
         version: 4.2.5(vue@3.3.8)
@@ -595,6 +603,12 @@ packages:
     requiresBuild: true
     dev: true
     optional: true
+
+  /@iconify-json/mdi@1.1.55:
+    resolution: {integrity: sha512-ycnFub+EQx+3D/aDCg6iC7sjexOUa5GzxUNIZFFl0Pq7aDxbmhIludoyYnguEO3REyWf9FcOOmvVcQkdtwKHTw==}
+    dependencies:
+      '@iconify/types': 2.0.0
+    dev: true
 
   /@iconify/types@2.0.0:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}

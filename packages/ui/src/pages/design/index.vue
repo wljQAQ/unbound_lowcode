@@ -10,13 +10,14 @@ import {
   NTooltip
 } from 'naive-ui';
 import DesignContainer from './DesignContainer.vue';
-import { nextTick, shallowRef } from 'vue';
-import { useEventListener, unrefElement } from '@vueuse/core';
-import { useDrag } from '@unbound_lowcode/shared';
+import { shallowRef } from 'vue';
+import { useDrag, useDrop } from '@unbound_lowcode/shared';
 
-const btnRef = shallowRef(null);
+const dragRef = shallowRef(null);
+const dropRef = shallowRef(null);
 
-useDrag(btnRef);
+useDrag(dragRef);
+useDrop(dropRef);
 </script>
 
 <template>
@@ -48,7 +49,7 @@ useDrag(btnRef);
         <n-space vertical :wrap-item="false">
           <n-tooltip placement="right" :x="0">
             <template #trigger>
-              <n-button ref="btnRef" class="w-full" text>
+              <n-button ref="dragRef" class="w-full" text>
                 <span class="i-mdi-github" />
               </n-button>
             </template>
@@ -59,7 +60,7 @@ useDrag(btnRef);
       <n-layout>
         <!-- 画布区 -->
         <n-layout-content>
-          <design-container></design-container>
+          <design-container ref="dropRef"></design-container>
         </n-layout-content>
         <!-- <n-layout-sider></n-layout-sider> -->
         <!-- <n-layout-footer></n-layout-footer> -->

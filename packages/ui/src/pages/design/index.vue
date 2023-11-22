@@ -4,20 +4,13 @@ import {
   NLayoutHeader,
   NLayoutContent,
   NLayoutSider,
-  NLayoutFooter,
   NButton,
-  NSpace,
-  NTooltip
+  NSpace
 } from 'naive-ui';
+
 import DesignContainer from './DesignContainer.vue';
-import { shallowRef } from 'vue';
-import { useDrag, useDrop } from '@unbound_lowcode/shared';
-
-const dragRef = shallowRef(null);
-const dropRef = shallowRef(null);
-
-useDrag(dragRef);
-useDrop(dropRef);
+import Sider from './Sider.vue';
+import { DndProvider } from '@unbound_lowcode/shared';
 </script>
 
 <template>
@@ -43,29 +36,22 @@ useDrop(dropRef);
         </n-button>
       </n-space>
     </n-layout-header>
-    <n-layout has-sider>
-      <!-- 左侧功能区 -->
-      <n-layout-sider class="text-center" width="48" bordered>
-        <n-space vertical :wrap-item="false">
-          <n-tooltip placement="right" :x="0">
-            <template #trigger>
-              <n-button ref="dragRef" class="w-full" text>
-                <span class="i-mdi-github" />
-              </n-button>
-            </template>
-            github
-          </n-tooltip>
-        </n-space>
-      </n-layout-sider>
-      <n-layout>
-        <!-- 画布区 -->
-        <n-layout-content>
-          <design-container ref="dropRef"></design-container>
-        </n-layout-content>
-        <!-- <n-layout-sider></n-layout-sider> -->
-        <!-- <n-layout-footer></n-layout-footer> -->
+    <DndProvider>
+      <n-layout has-sider>
+        <!-- 左侧功能区 -->
+        <n-layout-sider class="text-center" width="48" bordered>
+          <Sider></Sider>
+        </n-layout-sider>
+        <n-layout>
+          <!-- 画布区 -->
+          <n-layout-content>
+            <design-container></design-container>
+          </n-layout-content>
+          <!-- <n-layout-sider></n-layout-sider> -->
+          <!-- <n-layout-footer></n-layout-footer> -->
+        </n-layout>
       </n-layout>
-    </n-layout>
+    </DndProvider>
   </n-layout>
 </template>
 

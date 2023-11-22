@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.6.1",
-    "vue": "^3.3.8"
+    "vue": "^3.3.8",
+    "vue-demi": "^0.14.6"
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.55",

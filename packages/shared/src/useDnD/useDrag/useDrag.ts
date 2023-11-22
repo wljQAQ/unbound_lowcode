@@ -1,13 +1,16 @@
-import { nextTick, shallowRef } from 'vue';
+import { nextTick, shallowRef } from 'vue-demi';
 import { useDragOptions } from './type';
 import { useEventListener, unrefElement } from '@vueuse/core';
+import { useDndContextInjector } from '../DndContext';
 
 export function useDrag(options: useDragOptions) {
-  const { el } = options;
+  const { el, item, effectAllowed, dataType } = options;
+  const dndContext = useDndContextInjector();
+  dndContext?.setItem(item);
 
   useEventListener(el, 'dragstart', e => {
-    console.log('dragstart', e);
-    e.dataTransfer?.items = 1;
+    dndContext?.setItem(item);
+    e.dataTransfer!.effectAllowed = effectAllowed || 'uninitialized';
   });
 
   const init = async () => {

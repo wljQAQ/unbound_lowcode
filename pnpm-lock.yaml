@@ -14,6 +14,9 @@ importers:
       vue:
         specifier: ^3.3.8
         version: 3.3.8(typescript@5.2.2)
+      vue-demi:
+        specifier: ^0.14.6
+        version: 0.14.6(vue@3.3.8)
     devDependencies:
       '@iconify-json/mdi':
         specifier: ^1.1.55

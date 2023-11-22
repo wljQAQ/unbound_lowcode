@@ -2,5 +2,7 @@ import { MaybeRefOrGetter } from '@vueuse/core';
 
 export interface useDragOptions {
   el: MaybeRefOrGetter<HTMLElement | null | undefined>;
-  items?: unknown;
+  item?: unknown;
+  effectAllowed?: DataTransfer['effectAllowed'];
+  dataType?: string | string[] | Symbol | Symbol[];
 }

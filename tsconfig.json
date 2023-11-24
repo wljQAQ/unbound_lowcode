@@ -25,7 +25,8 @@
     "noFallthroughCasesInSwitch": true,
     "paths": {
       "@unbound_lowcode/*": ["packages/*"]
-    }
+    },
+    "types": ["vite/client"]
   },
   "include": ["packages"],
   "exclude": ["node_modules"]

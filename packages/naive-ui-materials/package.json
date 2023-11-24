@@ -1,0 +1,15 @@
+{
+  "name": "@unbound_lowcode/naive-ui-materials",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "devDependencies": {
+    "naive-ui": "^2.35.0"
+  }
+}

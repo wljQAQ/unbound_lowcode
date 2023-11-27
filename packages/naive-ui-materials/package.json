@@ -14,7 +14,7 @@
   ],
   "exports": {
     ".": {
-      "import": "./dist/naive-ui-materials.es.js",
+      "import": "./index.ts",
       "require": "./dist/naive-ui-materials.umd.js"
     }
   },

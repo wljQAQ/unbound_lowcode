@@ -2,14 +2,26 @@
   "name": "@unbound_lowcode/naive-ui-materials",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "dist/naive-ui-materials.umd.js",
+  "module": "dist/naive-ui-materials.es.js",
+  "types": "dist/naive-ui-materials.es.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "vite build"
   },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/naive-ui-materials.es.js",
+      "require": "./dist/naive-ui-materials.umd.js"
+    }
+  },
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
-    "naive-ui": "^2.35.0"
+    "naive-ui": "^2.35.0",
+    "vite-plugin-dts": "^3.6.3"
   }
 }

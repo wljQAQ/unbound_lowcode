@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "vue-router": "^4.2.5",
-    "@unbound_lowcode/shared": "workspace:*"
+    "@unbound_lowcode/shared": "workspace:*",
+    "@unbound_lowcode/naive-ui-materials": "workspace:*"
   }
 }
+ 

@@ -5,11 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./dist/naive-ui-materials.umd.js"></script>
   </head>
   <body>
-    <script src="./dist/test.umd.js"></script>
-    <script>
-      console.log(window, window.test);
+    <div id="app">
+      {{ message }}
+
+      <component :is="Com"></component>
+    </div>
+
+    <script type="module">
+      const { createApp, ref, defineAsyncComponent } = Vue;
+      createApp({
+        setup() {
+          const message = ref('Hello vue!');
+          console.log(window.NaiveUIMaterials);
+          const Com = defineAsyncComponent(window.NaiveUIMaterials.componentModules.Button);
+          return {
+            message,
+            Com
+          };
+        }
+      }).mount('#app');
     </script>
   </body>
 </html>

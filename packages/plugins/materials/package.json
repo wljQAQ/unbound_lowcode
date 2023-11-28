@@ -1,5 +1,5 @@
 {
-  "name": "@unbound_lowcode/skeleton",
+  "name": "@unbound_lowcode/plugins-materials",
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
@@ -7,8 +7,5 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "license": "ISC",
-  "dependencies": {
-    "naive-ui": "^2.35.0"
-  }
+  "license": "ISC"
 }

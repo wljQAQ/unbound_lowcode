@@ -1,7 +1,10 @@
 <script setup lang="ts" name="design">
-import LeftSider from './LeftSider.vue';
-import LeftSiderPane from './LeftSiderPane.vue';
+import { useSkeletonContextInjector } from '..';
+import LeftArea from './LeftArea.vue';
+import LeftAreaPane from './LeftAreaPane.vue';
 import { NLayout, NLayoutHeader, NLayoutContent, NButton, NSpace } from 'naive-ui';
+
+const skeletonContext = useSkeletonContextInjector();
 </script>
 
 <template>
@@ -13,11 +16,11 @@ import { NLayout, NLayoutHeader, NLayoutContent, NButton, NSpace } from 'naive-u
     </n-layout-header>
 
     <n-layout class="relative" has-sider>
-      <left-sider></left-sider>
-      <left-sider-pane></left-sider-pane>
+      <left-area></left-area>
+      <left-area-pane></left-area-pane>
 
       <n-layout>
-        <n-layout-content>content </n-layout-content>
+        <n-layout-content> content </n-layout-content>
       </n-layout>
     </n-layout>
   </n-layout>

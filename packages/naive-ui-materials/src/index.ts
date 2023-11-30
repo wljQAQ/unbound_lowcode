@@ -3,6 +3,8 @@ const componentModules: Record<string, () => Promise<Component>> = import.meta.g
   './*/index.vue'
 );
 
+console.log(import.meta.glob('./*/*/index.vue'));
+
 //修改一下key名
 const modifiedModules = Object.keys(componentModules).reduce((acc, key) => {
   const modifiedKey = key.replace(/^.*\/([^/]+)\/.*$/, '$1');

@@ -21,6 +21,7 @@
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
-    "vite-plugin-dts": "^3.6.3"
+    "vite-plugin-dts": "^3.6.3",
+    "@unbound_lowcode/types": "workspace:*"
   }
 }

@@ -15,6 +15,7 @@
   },
   "dependencies": {
     "@vueuse/core": "^10.6.1",
+    "naive-ui": "^2.35.0",
     "vue": "^3.3.8",
     "vue-demi": "^0.14.6"
   },

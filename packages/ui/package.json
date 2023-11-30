@@ -9,11 +9,11 @@
     "preview": "vite preview"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue-jsx": "^3.1.0",
-    "naive-ui": "^2.35.0"
+    "@vitejs/plugin-vue-jsx": "^3.1.0"
   },
   "dependencies": {
     "@unbound_lowcode/naive-ui-materials": "workspace:*",
+    "@unbound_lowcode/plugins-materials": "workspace:*",
     "@unbound_lowcode/shared": "workspace:*",
     "@unbound_lowcode/skeleton": "workspace:*",
     "vue-router": "^4.2.5"

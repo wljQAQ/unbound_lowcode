@@ -1,6 +1,6 @@
 import { provide, inject } from 'vue-demi';
 
-import type { SkeletonManager } from './SkeletonManager';
+import type { SkeletonManager } from './useSkeletonManager';
 
 const SkeletonContextSymbol = Symbol.for('SkeletonContext');
 

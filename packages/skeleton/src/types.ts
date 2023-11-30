@@ -11,9 +11,9 @@ export interface LayoutProps {
 }
 
 export interface LayoutBaseConfig<T> {
-  style: CSSProperties;
-  visible: boolean;
-  props: T;
+  style?: CSSProperties;
+  visible?: boolean;
+  props?: T;
 }
 
 export interface AreasProps {
@@ -24,7 +24,7 @@ export interface AreasBaseConfig {
   area: 'topArea' | 'leftArea' | 'rightArea' | 'toolbar' | 'bottomArea' | 'mainArea';
   name: string;
   type: string;
-  content?: Component;
+  content?: Component | HTMLElement | SVGAElement | VNode;
   props?: {
     align?: 'top' | 'bottom' | 'left' | 'center' | 'right';
     icon?: Component | HTMLElement | SVGAElement | VNode;

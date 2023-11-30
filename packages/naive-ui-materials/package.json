@@ -21,7 +21,6 @@
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
-    "naive-ui": "^2.35.0",
     "vite-plugin-dts": "^3.6.3"
   }
 }

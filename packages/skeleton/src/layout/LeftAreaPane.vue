@@ -1,24 +1,38 @@
 <script setup lang="ts">
-import { AreasBaseConfig, useSkeletonContextInjector } from '..';
+import { useSkeletonContextInjector } from '..';
 import { onClickOutside } from '@vueuse/core';
 import { shallowRef } from 'vue-demi';
+import { NScrollbar } from 'naive-ui';
 
 const paneRef = shallowRef(null);
 
 const skeletonContext = useSkeletonContextInjector();
-
-onClickOutside(paneRef, () => {
-  skeletonContext!.currentLeftPane = null;
-});
+onClickOutside(paneRef, () => skeletonContext && skeletonContext.setCurrentLeftPane(null));
 </script>
 
 <template>
+  <!-- v-if="skeletonContext?.currentLeftPane.value?.area" -->
   <div
     ref="paneRef"
-    v-if="skeletonContext?.currentLeftPane?.area"
-    class="absolute top-0 left-10 z-1"
+    :style="{ left: `${skeletonContext?.layout.leftArea?.props?.width || 48}px` }"
+    class="absolute top-0 flex flex-col z-1 bg-white py-2 w-40 h-full"
   >
-    111
+    <div class="flex-between px-2">
+      <span class="font-bold text-5">标题</span>
+      <div>
+        <span
+          v-if="skeletonContext?.currentLeftPane.value?.props?.fix"
+          class="inline-block i-mdi:eyedropper text-2"
+        />
+        <span v-else class="inline-block i-mdi:eyedropper-off text-2" />
+        <span class="inline-block i-mdi:close text-2" />
+      </div>
+    </div>
+
+    <!-- 插件内容 -->
+    <n-scrollbar class="flex-auto">
+      <component :is="skeletonContext?.currentLeftPane.value?.content"></component>
+    </n-scrollbar>
   </div>
 </template>
 

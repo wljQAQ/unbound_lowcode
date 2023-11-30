@@ -16,7 +16,10 @@ const skeletonContext = useSkeletonContextInjector();
     </n-layout-header>
 
     <n-layout class="relative" has-sider>
-      <left-area></left-area>
+      <left-area
+        :style="skeletonContext?.layout.leftArea?.style"
+        v-bind="skeletonContext?.layout.leftArea?.props"
+      />
       <left-area-pane></left-area-pane>
 
       <n-layout>

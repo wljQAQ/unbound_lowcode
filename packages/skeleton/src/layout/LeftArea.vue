@@ -5,12 +5,12 @@ import { AreasBaseConfig, useSkeletonContextInjector } from '..';
 const skeletonContext = useSkeletonContextInjector();
 
 function onClick(area: AreasBaseConfig) {
-  skeletonContext!.currentLeftPane = area;
+  skeletonContext && (skeletonContext.currentLeftPane.value = area);
 }
 </script>
 
 <template>
-  <n-layout-sider class="text-center" width="48" bordered>
+  <n-layout-sider class="text-center">
     <n-space class="pt-2" vertical>
       <template v-for="area in skeletonContext?.areas.leftArea">
         <n-tooltip placement="right">

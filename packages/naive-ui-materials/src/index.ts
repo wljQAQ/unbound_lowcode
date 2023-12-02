@@ -1,9 +1,11 @@
 import type { Component } from 'vue';
+import { loadComponentModules } from '../utils';
+
+loadComponentModules();
+
 const componentModules: Record<string, () => Promise<Component>> = import.meta.glob(
   './*/index.vue'
 );
-
-console.log(import.meta.glob('./*/*/index.vue'));
 
 //修改一下key名
 const modifiedModules = Object.keys(componentModules).reduce((acc, key) => {

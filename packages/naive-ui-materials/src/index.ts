@@ -1,17 +1,48 @@
 import type { Component } from 'vue';
-import { loadComponentModules } from '../utils';
+import { material, version } from '../package.json';
+import { MaterialComponentModules, MaterialGroupModules, Materials } from '@unbound_lowcode/types';
 
-loadComponentModules();
+//为了达到动态加载 并且 分类
 
-const componentModules: Record<string, () => Promise<Component>> = import.meta.glob(
-  './*/index.vue'
-);
+function loadMaterial(): Materials {
+  const groupModules: MaterialGroupModules = import.meta.glob('../src/*/index.ts', { eager: true });
 
-//修改一下key名
-const modifiedModules = Object.keys(componentModules).reduce((acc, key) => {
-  const modifiedKey = key.replace(/^.*\/([^/]+)\/.*$/, '$1');
-  acc[modifiedKey] = componentModules[key];
-  return acc;
-}, {} as Record<string, () => Promise<Component>>);
+  const componentModules: MaterialComponentModules = import.meta.glob('../src/*/*/index.ts', {
+    eager: true
+  });
 
-export default modifiedModules;
+  const components: Materials['components'] = {};
+  const componentsMeta: Materials['componentsMeta'] = {};
+
+  console.log(componentModules, 'componentsModules');
+
+  for (const key in componentModules) {
+    const item = componentModules[key].default;
+    let [, groupFileName, comFileName] = key.split('/');
+    let componentName = item.meta.componentName || comFileName;
+    item.meta.componentName = componentName;
+    item.schema.componentName = comFileName;
+
+    //TODO 如果组件是字符串 应该做额外处理让他转成
+    if (typeof item.component !== 'string') {
+      components[componentName] = item.component;
+    }
+
+    //Meta要做成分类的
+
+    componentsMeta[groupFileName].push(item.meta);
+  }
+
+  return {
+    version,
+    name: material,
+    components,
+    componentsMeta
+  };
+}
+
+const result = loadMaterial();
+
+console.log(result, 'result');
+
+export default loadMaterial();

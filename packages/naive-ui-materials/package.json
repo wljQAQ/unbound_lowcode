@@ -1,5 +1,6 @@
 {
   "name": "@unbound_lowcode/naive-ui-materials",
+  "material": "NaiveUI",
   "version": "1.0.0",
   "description": "",
   "main": "dist/naive-ui-materials.umd.js",

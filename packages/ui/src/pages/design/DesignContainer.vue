@@ -5,13 +5,11 @@ import { shallowRef, defineAsyncComponent } from 'vue-demi';
 const dropRef = shallowRef(null);
 useDrop(dropRef);
 
-const Button = defineAsyncComponent(Modules.componentModules.Button);
 console.log(Modules);
 </script>
 
 <template>
   <div ref="dropRef" class="w-full h-full">
-    <Button></Button>
   </div>
 </template>
 

@@ -1,4 +1,3 @@
-import type { Component } from 'vue';
 import { material, version } from '../package.json';
 import { MaterialComponentModules, MaterialGroupModules, Materials } from '@unbound_lowcode/types';
 
@@ -14,7 +13,10 @@ function loadMaterial(): Materials {
   const components: Materials['components'] = {};
   const componentsMeta: Materials['componentsMeta'] = {};
 
-  console.log(componentModules, 'componentsModules');
+  for (const key in groupModules) {
+    let [, groupFileName] = key.split('/');
+    componentsMeta[groupFileName] = groupModules[key].default;
+  }
 
   for (const key in componentModules) {
     const item = componentModules[key].default;
@@ -30,7 +32,7 @@ function loadMaterial(): Materials {
 
     //Meta要做成分类的
 
-    componentsMeta[groupFileName].push(item.meta);
+    componentsMeta[groupFileName].children.push(item.meta);
   }
 
   return {
@@ -40,9 +42,5 @@ function loadMaterial(): Materials {
     componentsMeta
   };
 }
-
-const result = loadMaterial();
-
-console.log(result, 'result');
 
 export default loadMaterial();

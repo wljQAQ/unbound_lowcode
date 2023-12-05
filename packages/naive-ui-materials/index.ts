@@ -1,3 +1,3 @@
-import componentModules from './src';
+import Materials from './src';
 
-export default componentModules;
+export default Materials;

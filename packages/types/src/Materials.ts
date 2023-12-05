@@ -1,10 +1,19 @@
 import { Component } from 'vue-demi';
+import { Optional } from '.';
 
 export type MaterialComponentModules = Record<string, { default: MaterialItem }>;
-export type MaterialGroupModules = Record<string, { default: MaterialItem }>;
+export type MaterialGroupModules = Record<string, { default: MaterialGroup }>;
 
 //物料组件
 export type MaterialComponent = () => Promise<Component>;
+
+//物料组件配置类型
+export type MaterialItemOption = Optional<MaterialItem, 'componentName'>;
+export type MaterialItemMetaOption = Optional<MaterialItemMeta, 'componentName'>;
+export type MaterialItemSchemaOption = Optional<
+  MaterialItemSchema,
+  'componentName' | 'id' | 'materialName'
+>;
 
 //三者的componentName应该是一致的
 export interface MaterialItem {
@@ -16,7 +25,7 @@ export interface MaterialItem {
 }
 
 export interface MaterialItemMeta {
-  title?: string;
+  title: string;
   description?: string;
   document?: string;
   screenShot?: string;
@@ -32,7 +41,6 @@ export interface MaterialItemSchema {
 
 export interface MaterialGroup {
   title: string;
-  groupName: string;
   children: MaterialItemMeta[];
 }
 

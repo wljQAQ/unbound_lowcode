@@ -16,6 +16,7 @@
     "@unbound_lowcode/plugins-materials": "workspace:*",
     "@unbound_lowcode/shared": "workspace:*",
     "@unbound_lowcode/skeleton": "workspace:*",
+    "@unbound_lowcode/engine": "workspace:*",
     "@unbound_lowcode/types": "workspace:*",
     "vue-router": "^4.2.5"
   }

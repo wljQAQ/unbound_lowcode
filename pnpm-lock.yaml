@@ -40,6 +40,20 @@ importers:
         specifier: ^5.0.0
         version: 5.0.0(@types/node@20.9.2)
 
+  packages/constants: {}
+
+  packages/engine:
+    devDependencies:
+      '@unbound_lowcode/constants':
+        specifier: workspace:*
+        version: link:../constants
+      '@unbound_lowcode/skeleton':
+        specifier: workspace:*
+        version: link:../skeleton
+      '@unbound_lowcode/types':
+        specifier: workspace:*
+        version: link:../types
+
   packages/naive-ui-materials:
     devDependencies:
       '@unbound_lowcode/types':
@@ -57,7 +71,11 @@ importers:
 
   packages/plugins/tree: {}
 
-  packages/shared: {}
+  packages/shared:
+    devDependencies:
+      '@unbound_lowcode/constants':
+        specifier: workspace:*
+        version: link:../constants
 
   packages/skeleton:
     devDependencies:
@@ -69,6 +87,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@unbound_lowcode/engine':
+        specifier: workspace:*
+        version: link:../engine
       '@unbound_lowcode/naive-ui-materials':
         specifier: workspace:*
         version: link:../naive-ui-materials

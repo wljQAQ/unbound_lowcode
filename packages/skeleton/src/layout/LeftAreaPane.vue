@@ -11,11 +11,11 @@ onClickOutside(paneRef, () => skeletonContext && skeletonContext.setCurrentLeftP
 </script>
 
 <template>
-  <!-- v-if="skeletonContext?.currentLeftPane.value?.area" -->
   <div
+    v-if="skeletonContext?.currentLeftPane.value?.area"
     ref="paneRef"
     :style="{ left: `${skeletonContext?.layout.leftArea?.props?.width || 48}px` }"
-    class="absolute top-0 flex flex-col z-1 bg-white py-2 w-40 h-full"
+    class="absolute top-0 flex flex-col z-1 bg-white py-2 h-full"
   >
     <div class="flex-between px-2">
       <span class="font-bold text-5">标题</span>

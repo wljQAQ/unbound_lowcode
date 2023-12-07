@@ -9,6 +9,7 @@
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
-    "@unbound_lowcode/constants": "workspace:*"
+    "@unbound_lowcode/constants": "workspace:*",
+    "@unbound_lowcode/types": "workspace:*"
   }
 }

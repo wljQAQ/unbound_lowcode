@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@unbound_lowcode/naive-ui-materials": "workspace:*",
-    "@unbound_lowcode/plugins-materials": "workspace:*",
+    "@unbound_lowcode/materials-pane-plugin": "workspace:*",
     "@unbound_lowcode/shared": "workspace:*",
     "@unbound_lowcode/skeleton": "workspace:*",
     "@unbound_lowcode/engine": "workspace:*",

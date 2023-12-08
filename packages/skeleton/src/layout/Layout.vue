@@ -2,9 +2,15 @@
 import { useSkeletonContextInjector } from '..';
 import LeftArea from './LeftArea.vue';
 import LeftAreaPane from './LeftAreaPane.vue';
-import { NLayout, NLayoutHeader, NLayoutContent, NButton, NSpace } from 'naive-ui';
+import { onClickOutside } from '@vueuse/core';
+import { NLayout, NLayoutHeader, NLayoutContent, NSpace } from 'naive-ui';
+import { shallowRef } from 'vue-demi';
 
 const skeletonContext = useSkeletonContextInjector();
+
+const leftAreaRef = shallowRef(null);
+
+onClickOutside(leftAreaRef, () => skeletonContext && skeletonContext.setCurrentLeftPane(null));
 </script>
 
 <template>
@@ -16,11 +22,10 @@ const skeletonContext = useSkeletonContextInjector();
     </n-layout-header>
 
     <n-layout class="relative" has-sider>
-      <left-area
-        :style="skeletonContext?.layout.leftArea?.style"
-        v-bind="skeletonContext?.layout.leftArea?.props"
-      />
-      <left-area-pane></left-area-pane>
+      <div ref="leftAreaRef">
+        <left-area :style="skeletonContext?.layout.leftArea?.style" v-bind="skeletonContext?.layout.leftArea?.props" />
+        <left-area-pane></left-area-pane>
+      </div>
 
       <n-layout>
         <n-layout-content> content </n-layout-content>

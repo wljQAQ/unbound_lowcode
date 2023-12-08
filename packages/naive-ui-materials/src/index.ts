@@ -10,12 +10,12 @@ function loadMaterial(): Materials {
     eager: true
   });
 
-  const components: Materials['components'] = {};
-  const componentsMeta: Materials['componentsMeta'] = {};
+  const componentsMap: Materials['componentsMap'] = {};
+  const componentsGroupMap: Materials['componentsGroupMap'] = {};
 
   for (const key in groupModules) {
     let [, groupFileName] = key.split('/');
-    componentsMeta[groupFileName] = groupModules[key].default;
+    componentsGroupMap[groupFileName] = groupModules[key].default;
   }
 
   for (const key in componentModules) {
@@ -27,19 +27,19 @@ function loadMaterial(): Materials {
 
     //TODO 如果组件是字符串 应该做额外处理让他转成
     if (typeof item.component !== 'string') {
-      components[componentName] = item.component;
+      componentsMap[componentName] = item.component;
     }
 
     //Meta要做成分类的
 
-    componentsMeta[groupFileName].children.push(item.meta);
+    componentsGroupMap[groupFileName].children.push(item.meta);
   }
 
   return {
     version,
     name: material,
-    components,
-    componentsMeta
+    componentsMap,
+    componentsGroupMap
   };
 }
 

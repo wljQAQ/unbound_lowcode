@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { NCalendar } from 'naive-ui';
+import { NInput } from 'naive-ui';
 </script>
 
 <template>
-  <NCalendar></NCalendar>
+  <NInput></NInput>
 </template>
 
 <style scoped></style>

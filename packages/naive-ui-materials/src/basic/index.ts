@@ -1,5 +1,5 @@
 import { MaterialGroup } from '@unbound_lowcode/types';
 export default {
-  title: '显示',
+  title: '基础',
   children: []
 } as MaterialGroup;

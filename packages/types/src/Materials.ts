@@ -10,10 +10,7 @@ export type MaterialComponent = () => Promise<Component>;
 //物料组件配置类型
 export type MaterialItemOption = Optional<MaterialItem, 'componentName'>;
 export type MaterialItemMetaOption = Optional<MaterialItemMeta, 'componentName'>;
-export type MaterialItemSchemaOption = Optional<
-  MaterialItemSchema,
-  'componentName' | 'id' | 'materialName'
->;
+export type MaterialItemSchemaOption = Optional<MaterialItemSchema, 'componentName' | 'id' | 'materialName'>;
 
 //三者的componentName应该是一致的
 export interface MaterialItem {
@@ -48,7 +45,7 @@ export interface Materials {
   version: string;
   name: string;
   //ESModules组件
-  components: Record<string, () => Promise<Component>>;
+  componentsMap: Record<string, () => Promise<Component>>;
   //用来描述组件的  分类 -》 组件描述
-  componentsMeta: Record<string, MaterialGroup>;
+  componentsGroupMap: Record<string, MaterialGroup>;
 }

@@ -66,7 +66,16 @@ importers:
         specifier: ^3.6.3
         version: 3.6.3(@types/node@20.9.2)(typescript@5.2.2)(vite@5.0.0)
 
-  packages/plugins/materialsPane:
+  packages/plugins/plugin-materials-pane:
+    devDependencies:
+      '@unbound_lowcode/shared':
+        specifier: workspace:*
+        version: link:../../shared
+      '@unbound_lowcode/types':
+        specifier: workspace:*
+        version: link:../../types
+
+  packages/plugins/plugin-vue-design-canvas:
     devDependencies:
       '@unbound_lowcode/shared':
         specifier: workspace:*
@@ -76,6 +85,12 @@ importers:
         version: link:../../types
 
   packages/plugins/tree: {}
+
+  packages/renderer/renderer-core: {}
+
+  packages/renderer/vue-renderer: {}
+
+  packages/renderer/vue-simulator-renderer: {}
 
   packages/shared:
     devDependencies:
@@ -99,12 +114,15 @@ importers:
       '@unbound_lowcode/engine':
         specifier: workspace:*
         version: link:../engine
-      '@unbound_lowcode/materials-pane-plugin':
-        specifier: workspace:*
-        version: link:../plugins/materialsPane
       '@unbound_lowcode/naive-ui-materials':
         specifier: workspace:*
         version: link:../naive-ui-materials
+      '@unbound_lowcode/plugin-materials-pane':
+        specifier: workspace:*
+        version: link:../plugins/plugin-materials-pane
+      '@unbound_lowcode/plugin-vue-design-canvas':
+        specifier: workspace:*
+        version: link:../plugins/plugin-vue-design-canvas
       '@unbound_lowcode/shared':
         specifier: workspace:*
         version: link:../shared

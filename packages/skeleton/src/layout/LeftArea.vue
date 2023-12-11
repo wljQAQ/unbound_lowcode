@@ -1,6 +1,7 @@
 <script setup lang="ts" name="design">
 import { NLayoutSider, NButton, NTooltip, NSpace } from 'naive-ui';
-import { AreasBaseConfig, useSkeletonContextInjector } from '..';
+import { AreasBaseConfig } from '@unbound_lowcode/types';
+import { useSkeletonContextInjector } from '..';
 
 const skeletonContext = useSkeletonContextInjector();
 
@@ -10,7 +11,7 @@ function onClick(area: AreasBaseConfig) {
 </script>
 
 <template>
-  <n-layout-sider class="text-center">
+  <n-layout-sider class="text-center" v-bind="skeletonContext?.layout.leftArea?.props">
     <n-space class="pt-2" vertical>
       <template v-for="area in skeletonContext?.areas.leftArea">
         <n-tooltip placement="right">

@@ -1,5 +1,6 @@
 <script setup lang="tsx">
-import { materialPanelPlugin } from '@unbound_lowcode/materials-pane-plugin';
+import { materialPanelPlugin } from '@unbound_lowcode/plugin-materials-pane';
+import { vueDesignCanvasPlugin } from '@unbound_lowcode/plugin-vue-design-canvas';
 import naiveUIMaterials from '@unbound_lowcode/naive-ui-materials';
 import { createEngine } from '@unbound_lowcode/engine';
 import App from '../../main';
@@ -16,6 +17,7 @@ engine.use({
 });
 
 engine.use(materialPanelPlugin());
+engine.use(vueDesignCanvasPlugin());
 </script>
 
 <template>

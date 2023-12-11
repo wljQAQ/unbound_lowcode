@@ -7,10 +7,12 @@ export function createEngine(): Engine {
   //骨架
   const skeleton: ISkeletonApi = {
     areas: {
-      leftArea: []
+      leftArea: [],
+      mainArea: []
     },
-    add(area) {
-      this.areas.leftArea!.push(area);
+    add(areaItem) {
+      console.log(areaItem.area);
+      this.areas[areaItem.area]!.push(areaItem);
     }
   };
   //物料

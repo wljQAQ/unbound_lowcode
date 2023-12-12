@@ -11,8 +11,8 @@ const isFixed = ref(Boolean(skeletonContext?.currentLeftPane.value?.props?.fix))
 <template>
   <div
     v-if="skeletonContext?.currentLeftPane.value?.area"
-    :style="{ left: `${skeletonContext?.layout.leftArea?.props?.width || 48}px` }"
-    class="absolute top-0 flex flex-col z-1 bg-white py-2 h-full"
+    :style="{ left: `${skeletonContext?.layout.leftArea?.props?.width || 48}px`, position: isFixed ? 'static' : 'absolute' }"
+    class="top-0 flex flex-col z-1 bg-white py-2 h-full"
   >
     <div class="flex-between px-2">
       <span class="font-bold text-4.5">标题</span>

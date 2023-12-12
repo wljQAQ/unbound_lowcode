@@ -4,10 +4,9 @@ export default {
   meta: {
     title: '输入框',
     description: '测试输入框',
-    screenShot,
+    screenShot
   },
   schema: {
-    componentName: 'NInput',
     props: {}
   },
   component: () => import('./index.vue')

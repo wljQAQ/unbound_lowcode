@@ -24,7 +24,7 @@ onClickOutside(leftAreaRef, () => {
     </n-layout-header>
 
     <n-layout class="relative" has-sider>
-      <div ref="leftAreaRef">
+      <div class="flex" ref="leftAreaRef">
         <left-area />
         <left-area-pane />
       </div>

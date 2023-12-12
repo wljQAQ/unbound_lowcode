@@ -48,4 +48,6 @@ export interface Materials {
   componentsMap: Record<string, () => Promise<Component>>;
   //用来描述组件的  分类 -》 组件描述
   componentsGroupMap: Record<string, MaterialGroup>;
+  //schemaMap
+  componentsSchemaMap: Record<string, MaterialItemSchema>;
 }

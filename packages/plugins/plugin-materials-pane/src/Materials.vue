@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import { NInput, NGrid, NGi, NButton, NPopover, NCard, NCollapse, NCollapseItem, NImage } from 'naive-ui';
-import { useEngineContext } from '@unbound_lowcode/shared';
+import { useEngineContext, useDragComponent } from '@unbound_lowcode/shared';
+import { MATERIAL_DESIGN_DND_TYPE } from '@unbound_lowcode/constants';
 import { MaterialItemMeta, IMaterialsApi, MaterialGroup } from '@unbound_lowcode/types';
 import { shallowRef, ShallowRef, ref } from 'vue-demi';
 
 const ctx = useEngineContext();
-
+console.log(ctx);
 const { materialGroupList, handleSearchMaterial } = useMaterial(ctx?.material);
 
 const { hoverBtnCurrent, handleEnterBtn, handleLeaveBtn } = useMaterialsButton();
-
-console.log('materials render', ctx?.material, materialGroupList);
 
 //需要把 物料库的所有分类都整合到一起比较好操作
 function useMaterial(material: IMaterialsApi | undefined) {
   let materialGroupList: ShallowRef<MaterialGroup[]> = shallowRef([]);
   let originMaterialGroupList: MaterialGroup[] = []; //即如一下初始化的物料分类列表 用来做筛选
 
+  //把物料对象转成列表
   function transformGroupMap2List() {
     if (!material) return;
     for (const key in material.materialsMap) {
@@ -85,29 +85,31 @@ function useMaterialsButton() {
         <!-- 组件 -->
         <n-grid v-for="component in group.children" :key="component.componentName" cols="2" x-gap="10" y-gap="10">
           <n-gi>
-            <n-button
-              class="w-full justify-initial"
-              :size="'small'"
-              :block="true"
-              @mouseenter="handleEnterBtn(component)"
-              @mouseleave="handleLeaveBtn"
-            >
-              <template #icon>
-                <span class="i-mdi:button-pointer text-1.8"></span>
-              </template>
-              <span class="text-ellipsis flex-auto text-left overflow-hidden">
-                {{ component.title }}
-              </span>
-              <n-popover v-if="hoverBtnCurrent === component.componentName" placement="right">
-                <template #trigger>
-                  <span class="i-mdi:help-circle-outline text-1.8"></span>
+            <use-drag-component :options="{ item: component, type: MATERIAL_DESIGN_DND_TYPE }">
+              <n-button
+                class="w-full justify-initial"
+                :size="'small'"
+                :block="true"
+                @mouseenter="handleEnterBtn(component)"
+                @mouseleave="handleLeaveBtn"
+              >
+                <template #icon>
+                  <span class="i-mdi:button-pointer text-1.8"></span>
                 </template>
-                <n-card :title="component.title">
-                  {{ component.description }}
-                  <n-image class="block mt-1" v-if="component.screenShot" :src="component.screenShot" lazy />
-                </n-card>
-              </n-popover>
-            </n-button>
+                <span class="text-ellipsis flex-auto text-left overflow-hidden">
+                  {{ component.title }}
+                </span>
+                <n-popover v-if="hoverBtnCurrent === component.componentName" placement="right">
+                  <template #trigger>
+                    <span class="i-mdi:help-circle-outline text-1.8"></span>
+                  </template>
+                  <n-card :title="component.title">
+                    {{ component.description }}
+                    <n-image class="block mt-1" v-if="component.screenShot" :src="component.screenShot" lazy />
+                  </n-card>
+                </n-popover>
+              </n-button>
+            </use-drag-component>
           </n-gi>
         </n-grid>
       </n-collapse-item>

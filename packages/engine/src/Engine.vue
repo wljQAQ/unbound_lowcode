@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { Skeleton } from '@unbound_lowcode/skeleton';
-import { useEngineContext } from '@unbound_lowcode/shared';
+import { useEngineContext, DndProvider } from '@unbound_lowcode/shared';
 
 const ctx = useEngineContext();
-
-console.log('Engine Component Render', ctx);
 </script>
 
 <template>
-  <Skeleton :areas="ctx?.skeleton.areas"></Skeleton>
+  <DndProvider>
+    <Skeleton :areas="ctx?.skeleton.areas"></Skeleton>
+  </DndProvider>
 </template>
 
 <style scoped></style>

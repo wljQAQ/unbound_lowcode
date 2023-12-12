@@ -2,10 +2,9 @@ import { DndManager } from './types';
 
 export class DndManagerImpl implements DndManager {
   item: unknown;
+  type: string | symbol = '';
 
-  constructor(item: unknown) {
-    this.setItem(item);
-  }
+  constructor() {}
 
   getItem() {
     return this.item;
@@ -13,5 +12,13 @@ export class DndManagerImpl implements DndManager {
 
   setItem(item: unknown): void {
     this.item = item;
+  }
+
+  getType() {
+    return this.type;
+  }
+
+  setType(type: string | symbol) {
+    this.type = type;
   }
 }

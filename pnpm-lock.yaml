@@ -68,6 +68,9 @@ importers:
 
   packages/plugins/plugin-materials-pane:
     devDependencies:
+      '@unbound_lowcode/constants':
+        specifier: workspace:*
+        version: link:../../constants
       '@unbound_lowcode/shared':
         specifier: workspace:*
         version: link:../../shared
@@ -83,14 +86,37 @@ importers:
       '@unbound_lowcode/types':
         specifier: workspace:*
         version: link:../../types
+      '@unbound_lowcode/vue-simulator-renderer':
+        specifier: workspace:*
+        version: link:../../renderer/vue-simulator-renderer
 
   packages/plugins/tree: {}
 
   packages/renderer/renderer-core: {}
 
-  packages/renderer/vue-renderer: {}
+  packages/renderer/vue-renderer:
+    dependencies:
+      '@unbound_lowcode/renderer-core':
+        specifier: workspace:*
+        version: link:../renderer-core
+      '@unbound_lowcode/types':
+        specifier: workspace:*
+        version: link:../../types
 
-  packages/renderer/vue-simulator-renderer: {}
+  packages/renderer/vue-simulator-renderer:
+    dependencies:
+      '@unbound_lowcode/constants':
+        specifier: workspace:*
+        version: link:../../constants
+      '@unbound_lowcode/shared':
+        specifier: workspace:*
+        version: link:../../shared
+      '@unbound_lowcode/types':
+        specifier: workspace:*
+        version: link:../../types
+      '@unbound_lowcode/vue-renderer':
+        specifier: workspace:*
+        version: link:../vue-renderer
 
   packages/shared:
     devDependencies:

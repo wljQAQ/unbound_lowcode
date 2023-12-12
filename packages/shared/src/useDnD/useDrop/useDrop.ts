@@ -1,16 +1,18 @@
-import { nextTick, shallowRef } from 'vue-demi';
-import { useEventListener, unrefElement, MaybeRefOrGetter } from '@vueuse/core';
+import { nextTick } from 'vue-demi';
+import { DropOptions } from '.';
+import { useEventListener, unrefElement } from '@vueuse/core';
 import { useDndContextInjector } from '../DndContext';
 
-export function useDrop(el: MaybeRefOrGetter<HTMLElement | null | undefined>) {
+export function useDrop(options: DropOptions) {
+  const { el, accept } = options;
+  const dndContext = useDndContextInjector();
   useEventListener(el, 'drop', e => {
-    e.dataTransfer!.dropEffect = 'copy';
-    console.log('drop', e);
-    console.log(e.dataTransfer?.getData('test'));
+    const type = dndContext?.getType();
+    if (type !== accept || (Array.isArray(accept) && accept.find(i => i !== type))) return;
+
+    console.log('drop', dndContext);
   });
 
-  const a = useDndContextInjector();
-  console.log(a?.getItem());
   useEventListener(el, 'dragover', e => e.preventDefault());
 
   const init = async () => {

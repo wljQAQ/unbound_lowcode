@@ -7,7 +7,6 @@ export default {
     screenShot
   },
   schema: {
-    componentName: 'NButton',
     props: {}
   },
   component: () => import('./index.vue')

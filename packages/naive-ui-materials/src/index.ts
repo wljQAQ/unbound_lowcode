@@ -12,6 +12,7 @@ function loadMaterial(): Materials {
 
   const componentsMap: Materials['componentsMap'] = {};
   const componentsGroupMap: Materials['componentsGroupMap'] = {};
+  const componentsSchemaMap: Materials['componentsSchemaMap'] = {};
 
   for (const key in groupModules) {
     let [, groupFileName] = key.split('/');
@@ -25,13 +26,14 @@ function loadMaterial(): Materials {
     item.meta.componentName = componentName;
     item.schema.componentName = comFileName;
 
-    //TODO 如果组件是字符串 应该做额外处理让他转成
+    //TODO 如果组件是字符串 应该做额外处理让他转成组件
     if (typeof item.component !== 'string') {
       componentsMap[componentName] = item.component;
     }
 
+    //schemaMap
+    componentsSchemaMap[componentName] = item.schema;
     //Meta要做成分类的
-
     componentsGroupMap[groupFileName].children.push(item.meta);
   }
 
@@ -39,7 +41,8 @@ function loadMaterial(): Materials {
     version,
     name: material,
     componentsMap,
-    componentsGroupMap
+    componentsGroupMap,
+    componentsSchemaMap
   };
 }
 

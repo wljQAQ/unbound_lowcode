@@ -1,10 +1,14 @@
 <script setup lang="ts">
 import { NButton } from 'naive-ui';
-console.log(98768678);
+import { useAttrs } from 'vue-demi';
+
+const attrs = useAttrs();
 </script>
 
 <template>
-  <NButton>test</NButton>
+  <NButton>
+    {{ attrs.content || '按钮' }}
+  </NButton>
 </template>
 
 <style scoped></style>

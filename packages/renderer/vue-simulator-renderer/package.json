@@ -12,6 +12,7 @@
     "@unbound_lowcode/types": "workspace:*",
     "@unbound_lowcode/constants": "workspace:*",
     "@unbound_lowcode/shared": "workspace:*",
-    "@unbound_lowcode/vue-renderer": "workspace:*"
+    "@unbound_lowcode/vue-renderer": "workspace:*",
+    "@unbound_lowcode/engine": "workspace:*"
   }
 }

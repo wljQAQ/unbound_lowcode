@@ -1,3 +1,3 @@
-export class Node {
-  constructor() {}
+export function useNodeModel() {
+    
 }

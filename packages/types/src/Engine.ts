@@ -1,5 +1,5 @@
 import { App } from 'vue-demi';
-import { AreasBaseConfig, Areas, Materials } from '.';
+import { AreasBaseConfig, Areas, Materials, PageModel } from '.';
 
 export type ICreateBaseEnginePlugin = () => IBaseEnginePlugin;
 
@@ -25,6 +25,7 @@ export interface Engine {
   // _plugins?: unknown[];
   material: IMaterialsApi;
   skeleton: ISkeletonApi;
+  page: PageModel;
   use(plugin: IBaseEnginePlugin, options?: any): Engine;
   install(app: App): void;
 }

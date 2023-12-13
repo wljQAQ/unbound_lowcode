@@ -108,6 +108,9 @@ importers:
       '@unbound_lowcode/constants':
         specifier: workspace:*
         version: link:../../constants
+      '@unbound_lowcode/engine':
+        specifier: workspace:*
+        version: link:../../engine
       '@unbound_lowcode/shared':
         specifier: workspace:*
         version: link:../../shared

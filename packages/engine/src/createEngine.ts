@@ -2,6 +2,7 @@ import { App, reactive, shallowRef } from 'vue-demi';
 import { engineContextSymbol } from '@unbound_lowcode/constants';
 import { Engine, ISkeletonApi, IMaterialsApi } from '@unbound_lowcode/types';
 import { default as EngineComponent } from './Engine.vue';
+import { usePageModel } from './models';
 
 export function createEngine(): Engine {
   //骨架
@@ -26,6 +27,7 @@ export function createEngine(): Engine {
   const engine: Engine = {
     skeleton,
     material,
+    page: usePageModel(),
     use(plugin, options) {
       plugin.install(this);
       return this;

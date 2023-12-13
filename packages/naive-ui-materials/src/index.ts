@@ -22,9 +22,15 @@ function loadMaterial(): Materials {
   for (const key in componentModules) {
     const item = componentModules[key].default;
     let [, groupFileName, comFileName] = key.split('/');
+
     let componentName = item.meta.componentName || comFileName;
+
+    //处理meta
     item.meta.componentName = componentName;
+
+    //处理schema
     item.schema.componentName = comFileName;
+    item.schema.packageName = material;
 
     //TODO 如果组件是字符串 应该做额外处理让他转成组件
     if (typeof item.component !== 'string') {

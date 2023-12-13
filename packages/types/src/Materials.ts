@@ -1,5 +1,5 @@
 import { Component } from 'vue-demi';
-import { Optional } from '.';
+import { Optional, IPublicNodeSchema } from '.';
 
 export type MaterialComponentModules = Record<string, { default: MaterialItem }>;
 export type MaterialGroupModules = Record<string, { default: MaterialGroup }>;
@@ -10,7 +10,6 @@ export type MaterialComponent = () => Promise<Component>;
 //物料组件配置类型
 export type MaterialItemOption = Optional<MaterialItem, 'componentName'>;
 export type MaterialItemMetaOption = Optional<MaterialItemMeta, 'componentName'>;
-export type MaterialItemSchemaOption = Optional<MaterialItemSchema, 'componentName' | 'id' | 'materialName'>;
 
 //三者的componentName应该是一致的
 export interface MaterialItem {
@@ -29,12 +28,7 @@ export interface MaterialItemMeta {
   componentName?: string;
 }
 
-export interface MaterialItemSchema {
-  materialName?: string;
-  componentName?: string;
-  props?: Record<string, any>;
-  id?: string;
-}
+export type MaterialItemSchema = Optional<IPublicNodeSchema, 'componentName' | 'id' | 'packageName'>;
 
 export interface MaterialGroup {
   title: string;

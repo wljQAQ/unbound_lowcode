@@ -16,4 +16,5 @@ export interface IPublicPageSchema {
 
 export interface PageModel {
   schema: IPublicPageSchema;
+  generateNode: (node) => IPublicNodeSchema;
 }

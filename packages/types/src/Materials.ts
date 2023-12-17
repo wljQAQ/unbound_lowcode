@@ -6,10 +6,8 @@ export type MaterialGroupModules = Record<string, { default: MaterialGroup }>;
 
 //物料组件
 export type MaterialComponent = () => Promise<Component>;
-
-//物料组件配置类型
-export type MaterialItemOption = Optional<MaterialItem, 'componentName'>;
-export type MaterialItemMetaOption = Optional<MaterialItemMeta, 'componentName'>;
+export type MaterialItemSchema = Optional<IPublicNodeSchema, 'componentName' | 'id' | 'packageName'>;
+export type MaterialItemMetaOptional = Optional<MaterialItemMeta, 'componentName' | 'packageName'>;
 
 //三者的componentName应该是一致的
 export interface MaterialItem {
@@ -22,13 +20,12 @@ export interface MaterialItem {
 
 export interface MaterialItemMeta {
   title: string;
+  packageName?: string;
   description?: string;
   document?: string;
   screenShot?: string;
   componentName?: string;
 }
-
-export type MaterialItemSchema = Optional<IPublicNodeSchema, 'componentName' | 'id' | 'packageName'>;
 
 export interface MaterialGroup {
   title: string;

@@ -27,6 +27,7 @@ function loadMaterial(): Materials {
 
     //处理meta
     item.meta.componentName = componentName;
+    item.meta.packageName = material;
 
     //处理schema
     item.schema.componentName = comFileName;

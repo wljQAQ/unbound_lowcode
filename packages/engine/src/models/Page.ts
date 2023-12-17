@@ -1,5 +1,6 @@
 import { PageModel, IPublicPageSchema } from '@unbound_lowcode/types';
 import { version } from '../../package.json';
+import { nanoid } from 'nanoid';
 
 const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
   id: Date.now().toString(),
@@ -20,7 +21,7 @@ const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
         content: '测试按钮',
         type: 'error'
       },
-      id: Date.now().toString()
+      id: nanoid()
     }
   ]
 };

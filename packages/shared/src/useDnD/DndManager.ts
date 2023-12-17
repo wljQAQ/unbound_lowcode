@@ -6,8 +6,8 @@ export class DndManagerImpl implements DndManager {
 
   constructor() {}
 
-  getItem() {
-    return this.item;
+  getItem<T>(): T {
+    return this.item as T;
   }
 
   setItem(item: unknown): void {

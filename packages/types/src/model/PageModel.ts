@@ -1,4 +1,5 @@
 import { IPublicNodeSchema } from '.';
+import type { Reactive } from 'vue';
 
 export interface IPublicPageSchema {
   id: string;
@@ -15,6 +16,6 @@ export interface IPublicPageSchema {
 }
 
 export interface PageModel {
-  schema: IPublicPageSchema;
-  generateNode: (node) => IPublicNodeSchema;
+  schema: Reactive<IPublicPageSchema>;
+  insertNodeToPage: (node: IPublicNodeSchema) => void;
 }

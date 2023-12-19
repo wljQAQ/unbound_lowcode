@@ -15,8 +15,15 @@ useDrop({
     const item = ctx.getItem<MaterialItemMeta>();
     const { componentName, packageName } = item;
     if (!componentName || !packageName) return;
-    const schema = engineCtx?.material.materialsMap[packageName].componentsSchemaMap[componentName];
-    console.log(schema);  
+    //拿到schema
+    const schema = engineCtx.material.getSchemaByNameAndPkg({ comName: componentName, pkgName: packageName });
+    if (!schema) return;
+    //生成node
+    const node = engineCtx.node.createNode(schema);
+    if (!node) return;
+    //将schema放入到page中
+    engineCtx.page.insertNodeToPage(node);
+    console.log(engineCtx.page);
   }
 });
 </script>
@@ -24,9 +31,9 @@ useDrop({
 <template>
   <VueRenderer
     ref="dropRef"
-    class="h-full w-full"                 
-    :schema="engineCtx?.page.schema"
-    :materialMap="engineCtx?.material.materialsMap"
+    class="h-full w-full"
+    :schema="engineCtx.page.schema"
+    :materialMap="engineCtx.material.materialsMap"
   ></VueRenderer>
 </template>
 

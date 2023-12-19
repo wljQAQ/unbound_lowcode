@@ -9,8 +9,7 @@ interface Props {
 
 const props = defineProps<Props>();
 
-
-console.log(props, 'props');
+console.log(props, 'VUE REANDER 组件渲染');
 </script>
 
 <template>
@@ -18,7 +17,7 @@ console.log(props, 'props');
     <template v-if="schema.children.length" v-for="node in schema.children" :key="node.id">
       <Node :node="node" :component="materialMap[node.packageName].componentsMap[node.componentName]"></Node>
     </template>
-    <!-- <template v-else> 暂无组件 </template> -->
+    <template v-else> 暂无组件 </template>
   </Page>
 </template>
 

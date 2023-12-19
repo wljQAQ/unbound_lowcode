@@ -1,3 +1,5 @@
+import { MaterialItemSchema } from '..';
+
 export interface IPublicNodeSchema {
   packageName: string;
   componentName: string;
@@ -6,6 +8,6 @@ export interface IPublicNodeSchema {
 }
 
 export interface NodeModel {
-  schema: IPublicNodeSchema;
-  getSchemaByMeta(): IPublicNodeSchema;
+  schema: IPublicNodeSchema | null;
+  createNode(schema: MaterialItemSchema): IPublicNodeSchema | null;
 }

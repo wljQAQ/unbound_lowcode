@@ -1,3 +1,13 @@
-import { NodeModel } from '@unbound_lowcode/types';
+import { MaterialModel } from '@unbound_lowcode/types';
 
-export function useNodeModel(): NodeModel {}
+export function useMaterialModel(): MaterialModel {
+  return {
+    materialsMap: {},
+    add(materials) {
+      this.materialsMap[materials.name] = materials;
+    },
+    getSchemaByNameAndPkg({ comName, pkgName }) {
+      return this.materialsMap[pkgName]?.componentsSchemaMap?.[comName] || false;
+    }
+  };
+}

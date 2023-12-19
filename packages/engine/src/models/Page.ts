@@ -1,5 +1,6 @@
 import { PageModel, IPublicPageSchema } from '@unbound_lowcode/types';
 import { version } from '../../package.json';
+import { reactive } from 'vue-demi';
 import { nanoid } from 'nanoid';
 
 const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
@@ -27,9 +28,13 @@ const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
 };
 
 export function usePageModel(initSchema?: IPublicPageSchema): PageModel {
-  const schema = initSchema || DEFAULT_PAGE_SCHEMA;
+  const schema = reactive(initSchema || DEFAULT_PAGE_SCHEMA);
 
   return {
-    schema
+    schema,
+    insertNodeToPage(node) {
+      this.schema.children.push(node);
+      console.log(this.schema);
+    }
   };
 }

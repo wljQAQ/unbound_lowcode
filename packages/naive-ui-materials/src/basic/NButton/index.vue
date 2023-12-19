@@ -3,6 +3,8 @@ import { NButton } from 'naive-ui';
 import { useAttrs } from 'vue-demi';
 
 const attrs = useAttrs();
+
+console.log('按钮组件渲染');
 </script>
 
 <template>

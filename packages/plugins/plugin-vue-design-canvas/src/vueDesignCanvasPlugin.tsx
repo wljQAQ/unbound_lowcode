@@ -1,12 +1,12 @@
-import { ICreateBaseEnginePlugin } from '@unbound_lowcode/types';
+import { ICreateBaseEnginePlugin, IBaseEnginePlugin } from '@unbound_lowcode/types';
 import { default as Canvas } from './Canvas.vue';
 import { markRaw } from 'vue-demi';
 
-export const vueDesignCanvasPlugin: ICreateBaseEnginePlugin = () => {
+export const vueDesignCanvasPlugin: () => IBaseEnginePlugin = () => {
   return {
     name: 'vueDesignCanvasPlugin',
     install(ctx) {
-      const { skeleton } = ctx;
+      const { skeleton, vue } = ctx;
 
       skeleton.add({
         area: 'mainArea',

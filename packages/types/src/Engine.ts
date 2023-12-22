@@ -15,6 +15,7 @@ export interface Engine {
   skeleton: SkeletonModel;
   page: PageModel;
   node: NodeModel;
+  vue: App;
   use(plugin: IBaseEnginePlugin, options?: any): Engine;
   install(app: App): void;
 }

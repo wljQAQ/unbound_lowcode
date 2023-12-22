@@ -10,6 +10,7 @@ export function createEngine(): Engine {
     material: useMaterialModel(),
     page: usePageModel(),
     node: useNodeModel(),
+    vue: {} as App,
     use(plugin, options) {
       plugin.install(this);
       return this;
@@ -17,6 +18,8 @@ export function createEngine(): Engine {
     install(app) {
       app.component('Engine', EngineComponent);
       app.provide(engineContextSymbol, this);
+      console.log(app);
+      this.vue = app;
     }
   };
   return engine;

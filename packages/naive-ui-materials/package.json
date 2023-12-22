@@ -22,7 +22,10 @@
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
-    "vite-plugin-dts": "^3.6.3",
-    "@unbound_lowcode/types": "workspace:*"
+    "@unbound_lowcode/types": "workspace:*",
+    "vite-plugin-dts": "^3.6.3"
+  },
+  "dependencies": {
+    "naive-ui": "^2.35.0"
   }
 }

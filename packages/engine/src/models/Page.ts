@@ -1,7 +1,6 @@
 import { PageModel, IPublicPageSchema } from '@unbound_lowcode/types';
 import { version } from '../../package.json';
 import { reactive } from 'vue-demi';
-import { nanoid } from 'nanoid';
 
 const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
   id: Date.now().toString(),
@@ -14,17 +13,7 @@ const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
   dataSource: {},
   route: '/',
   methods: {},
-  children: [
-    {
-      packageName: 'NaiveUI',
-      componentName: 'NButton',
-      props: {
-        content: '测试按钮',
-        type: 'error'
-      },
-      id: nanoid()
-    }
-  ]
+  children: []
 };
 
 export function usePageModel(initSchema?: IPublicPageSchema): PageModel {
@@ -34,7 +23,6 @@ export function usePageModel(initSchema?: IPublicPageSchema): PageModel {
     schema,
     insertNodeToPage(node) {
       this.schema.children.push(node);
-      console.log(this.schema);
     }
   };
 }

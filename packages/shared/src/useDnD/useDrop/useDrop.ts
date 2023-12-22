@@ -7,20 +7,33 @@ import { DndManager } from '../types';
 export function useDrop(options: DropOptions) {
   const { el, accept, drop } = options;
   const dndContext = useDndContextInjector();
-  useEventListener(el, 'drop', e => {
-    const type = dndContext?.getType();
-    if (type !== accept || (Array.isArray(accept) && accept.find(i => i !== type))) return;
-
-    drop?.(dndContext as DndManager);
-  });
-
-  useEventListener(el, 'dragover', e => e.preventDefault());
 
   const init = async () => {
     await nextTick();
     const dom = unrefElement(el);
-    // dom.draggable = true;
+
+    if (!dom) return;
+    //iframe元素需要特殊处理
+
+    if (dom instanceof HTMLIFrameElement) {
+      dom.onload = () => {
+        registerEvent(dom.contentDocument!);
+      };
+      return;
+    }
+    registerEvent(dom);
   };
+
+  function registerEvent(el: HTMLElement | Window | Document) {
+    useEventListener(el, 'drop', e => {
+      const type = dndContext?.getType();
+      if (type !== accept || (Array.isArray(accept) && accept.find(i => i !== type))) return;
+
+      drop?.(dndContext as DndManager);
+    });
+
+    useEventListener(el, 'dragover', e => e.preventDefault());
+  }
 
   init();
 }

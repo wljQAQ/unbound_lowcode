@@ -27,7 +27,6 @@ export const materialPanelPlugin: ICreateBaseEnginePlugin = () => {
           )
         }
       });
-      console.log(ctx, 'materialPanelPlugin');
     }
   };
 };

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@unbound_lowcode/types": "workspace:*",
-    "@unbound_lowcode/renderer-core": "workspace:*"
+    "@unbound_lowcode/renderer-core": "workspace:*",
+    "@unbound_lowcode/naive-ui-materials": "workspace:*"
   }
 }

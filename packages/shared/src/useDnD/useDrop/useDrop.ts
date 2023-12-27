@@ -7,7 +7,6 @@ import { DndManager } from '../types';
 export function useDrop(options: DropOptions) {
   const { el, accept, drop } = options;
   const dndContext = useDndContextInjector();
-
   const init = async () => {
     await nextTick();
     const dom = unrefElement(el);
@@ -25,7 +24,9 @@ export function useDrop(options: DropOptions) {
   };
 
   function registerEvent(el: HTMLElement | Window | Document) {
+    console.log(el);
     useEventListener(el, 'drop', e => {
+      console.log(1111211, dndContext);
       const type = dndContext?.getType();
       if (type !== accept || (Array.isArray(accept) && accept.find(i => i !== type))) return;
 

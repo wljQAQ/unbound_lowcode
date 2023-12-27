@@ -9,8 +9,11 @@
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
-    "@unbound_lowcode/types": "workspace:*",
     "@unbound_lowcode/shared": "workspace:*",
+    "@unbound_lowcode/types": "workspace:*",
     "@unbound_lowcode/vue-simulator-renderer": "workspace:*"
+  },
+  "dependencies": {
+    "@unbound_lowcode/constants": "workspace:^"
   }
 }

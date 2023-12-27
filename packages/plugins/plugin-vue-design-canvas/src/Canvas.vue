@@ -1,64 +1,58 @@
 <script setup lang="tsx">
-import { VueSimulatorRenderer } from '@unbound_lowcode/vue-simulator-renderer';
 import { shallowRef, nextTick } from 'vue-demi';
-import { createApp } from 'vue-demi';
-import App from './App.vue';
+import { useDrop, useEngineContext } from '@unbound_lowcode/shared';
+import { MATERIAL_DESIGN_DND_TYPE } from '@unbound_lowcode/constants';
+import { MaterialItemMeta } from '@unbound_lowcode/types';
 
+const engineCtx = useEngineContext();
 const iframeRef = shallowRef<HTMLIFrameElement | null>(null);
-const srcdoc = `<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="test">测试</div>
-  </body>
-</html>
-`;
 
-const Test = <div>测试测试测试</div>;
+// useDrop({
+//   el: iframeRef,
+//   accept: MATERIAL_DESIGN_DND_TYPE,
+//   drop(ctx) {
+//     const item = ctx.getItem<MaterialItemMeta>();
+//     const { componentName, packageName } = item;
+//     if (!componentName || !packageName) return;
+//     //拿到schema
+//     const schema = engineCtx.material.getSchemaByNameAndPkg({ comName: componentName, pkgName: packageName });
+//     if (!schema) return;
+//     //生成node
+//     const node = engineCtx.node.createNode(schema);
+//     if (!node) return;
+//     //将schema放入到page中
+//     engineCtx.page.insertNodeToPage(node);
+//   }
+// });
 
-async function onLoad() {
+async function onIframeLoad() {
   await nextTick();
-  const iframe = iframeRef.value;
-  if (!iframe) return;
-  const doc = iframe.contentDocument!;
-  const ele = doc.getElementById('test')!;
-  console.log(ele);
-  createApp(VueSimulatorRenderer).mount(ele);
-  doc.addEventListener('load', () => {
-    console.log(1231231);
-    const ele = doc.getElementById('test');
-    console.log(ele);
-  });
-
-  doc.addEventListener('click', e => {
-    const ele = doc.getElementById('test');
-    console.log(e, ele);
+  const doc = iframeRef.value?.contentDocument;
+  console.log(doc.getElementById('app'));
+  if (!doc) return;
+  useDrop({
+    el: doc.getElementById('app'),
+    accept: MATERIAL_DESIGN_DND_TYPE,
+    drop(ctx) {
+      console.log('drop', ctx);
+      const item = ctx.getItem<MaterialItemMeta>();
+      const { componentName, packageName } = item;
+      if (!componentName || !packageName) return;
+      //拿到schema
+      const schema = engineCtx.material.getSchemaByNameAndPkg({ comName: componentName, pkgName: packageName });
+      if (!schema) return;
+      //生成node
+      const node = engineCtx.node.createNode(schema);
+      if (!node) return;
+      //将schema放入到page中
+      engineCtx.page.insertNodeToPage(node);
+    }
   });
 }
-
-async function init() {
-  await nextTick();
-  const iframe = iframeRef.value;
-  if (!iframe) return;
-  const doc = iframe.contentDocument!;
-
-  doc.open();
-  doc.write(srcdoc);
-  doc.close();
-}
-
-// init();
 </script>
 
 <template>
-  <div class="w-full h-full">
-    <!-- <iframe ref="iframeRef" :srcdoc="srcdoc" @load="onLoad"></iframe> -->
-    <VueSimulatorRenderer></VueSimulatorRenderer>
-  </div>
+  <iframe class="w-full h-full border-none" ref="iframeRef" src="/canvas.html" @load="onIframeLoad"></iframe>
 </template>
 
 <style scoped></style>

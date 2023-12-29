@@ -1,44 +1,36 @@
-import { NodeModel, IPublicNodeSchema } from '@unbound_lowcode/types';
-import { generateUId } from '@unbound_lowcode/shared';
+import { CanvasModel } from '@unbound_lowcode/types';
 
-export function useNodeModel(): NodeModel {
+export function useCanvasModel(): CanvasModel {
   return {
-    schema: null,
-    createNode(materialSchema) {
-      if (!materialSchema.componentName || !materialSchema.packageName) return null;
-      return {
-        id: 'Node_' + generateUId(),
-        ...materialSchema
-      } as IPublicNodeSchema;
+    createIframe(iframe) {
+      const doc = iframe.contentDocument!;
+      doc.open();
+      doc.write(`
+    <!doctype html>
+    <html class="engine-design-mode">
+      <head><meta charset="utf-8"/>
+      </head>
+      <body>
+        <div id="app"><component :is="VueSimulatorRenderer" /></div>
+      </body>
+    </html>
+    `);
+      doc.close();
+      var script = doc.createElement('script');
+      script.type = 'module';
+      var code = `
+        import { VueSimulatorRenderer } from 'http://127.0.0.1:5174/src/index.ts';
+        const { Vue } = window.parent;
+        window.Vue = Vue;
+        console.log(Vue,VueSimulatorRenderer,window.app)
+        const el = document.getElementById("app");
+        window.app.mount(el)
+      `;
+      script.appendChild(doc.createTextNode(code));
+      doc.body.appendChild(script);
     },
-    // renderIframe() {
-    //   const iframe = iframeRef.value;
-    //   if (!iframe) return;
-    //   const doc = iframe.contentDocument!;
-
-    //   doc.open();
-    //   doc.write(`
-    // <!doctype html>
-    // <html class="engine-design-mode">
-    //   <head><meta charset="utf-8"/>
-    //   </head>
-    //   <body>
-    //     <div id="app">12312312312312</div>
-    //   </body>
-    // </html>
-    // `);
-    //   doc.close();
-    //   window.Vue = Vue;
-    //   window.Simulator = VueRenderer;
-    //   var script = doc.createElement('script');
-    //   var code = `
-    //     const {Vue,Simulator} = window.parent;
-    //     const {createApp} = Vue;
-    //     const el = document.getElementById("app");
-    //     createApp(Simulator).mount(el)
-    //   `;
-    //   script.appendChild(doc.createTextNode(code));
-    //   doc.body.appendChild(script);
-    // }
+    renderSimulator(iframeRef) {
+      this.createIframe(iframeRef);
+    }
   };
 }

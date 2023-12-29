@@ -1,5 +1,5 @@
 import { App } from 'vue-demi';
-import { MaterialModel, SkeletonModel, PageModel, NodeModel } from '.';
+import { MaterialModel, SkeletonModel, PageModel, NodeModel, CanvasModel } from '.';
 
 export type ICreateBaseEnginePlugin = () => IBaseEnginePlugin;
 
@@ -16,6 +16,7 @@ export interface Engine {
   page: PageModel;
   node: NodeModel;
   vue: App;
+  canvas: CanvasModel;
   use(plugin: IBaseEnginePlugin, options?: any): Engine;
   install(app: App): void;
 }

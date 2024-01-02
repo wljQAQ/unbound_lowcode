@@ -6,6 +6,7 @@ import UnoCSS from 'unocss/vite';
 export default defineConfig({
   plugins: [vue(), vueJsx(), UnoCSS()],
   server: {
-    port: 5555
+    port: 5555,
+    host: '0.0.0.0'
   }
 });

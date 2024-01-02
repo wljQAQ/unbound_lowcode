@@ -28,6 +28,7 @@ export function useCanvasModel(): CanvasModel {
       script.type = 'module';
       var code = `
         import Simulator from 'http://127.0.0.1:5555/src/index.ts';
+        console.log(Simulator,12312312)
        
         const el = document.getElementById("app");
         Simulator.render(el);

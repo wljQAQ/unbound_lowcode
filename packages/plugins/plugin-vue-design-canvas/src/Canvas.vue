@@ -3,12 +3,9 @@ import { shallowRef, nextTick } from 'vue-demi';
 import { useDrop, useEngineContext } from '@unbound_lowcode/shared';
 import { MATERIAL_DESIGN_DND_TYPE } from '@unbound_lowcode/constants';
 import { MaterialItemMeta } from '@unbound_lowcode/types';
-import * as Vue from 'vue/dist/vue.esm-bundler.js';
 
 const engineCtx = useEngineContext();
 const iframeRef = shallowRef<HTMLIFrameElement | null>(null);
-
-window.Vue = Vue;
 
 // useDrop({
 //   el: iframeRef,
@@ -60,7 +57,7 @@ nextTick(() => {
 
 <template>
   <!-- <iframe class="w-full h-full border-none" ref="iframeRef" src="/canvas.html" @load="onIframeLoad"></iframe>   -->
-  <iframe class="w-full h-full border-none" ref="iframeRef"></iframe>
+  <iframe name="SimulatorRenderer" class="w-full h-full border-none" ref="iframeRef"></iframe>
 </template>
 
 <style scoped></style>

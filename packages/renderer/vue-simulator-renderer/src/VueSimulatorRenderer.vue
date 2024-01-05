@@ -2,11 +2,20 @@
 import 'virtual:uno.css';
 import { useDrop, useEngineContext } from '@unbound_lowcode/shared';
 import { MATERIAL_DESIGN_DND_TYPE } from '@unbound_lowcode/constants';
-import { MaterialItemMeta } from '@unbound_lowcode/types';
+import { MaterialItemMeta, SimulatorRenderer } from '@unbound_lowcode/types';
 import { VueRenderer } from '@unbound_lowcode/vue-renderer';
 import { shallowRef } from 'vue-demi';
+
+interface Prop {
+  renderer: SimulatorRenderer;
+}
+
+const props = defineProps<Prop>();
+
 const dropRef = shallowRef(null);
 const engineCtx = useEngineContext();
+
+console.log(props.renderer);
 </script>
 
 <template>

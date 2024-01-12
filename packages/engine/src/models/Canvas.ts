@@ -4,12 +4,12 @@ export function useCanvasModel(): CanvasModel {
   //主机  用来与模拟器进行交互
   return {
     simulatorRenderer: null,
-    async renderSimulator(iframeRef) {
+    async renderSimulator(iframeRef, engineCtx) {
       const doc = iframeRef.contentDocument!;
       const win = iframeRef.contentWindow!;
 
       this.simulatorRenderer = await this.createIframe(iframeRef);
-      this.simulatorRenderer.run();
+      this.simulatorRenderer.run(engineCtx);
 
       win.addEventListener('drop', () => {
         console.log('drop');
@@ -18,6 +18,8 @@ export function useCanvasModel(): CanvasModel {
         e.preventDefault();
         console.log('over');
       });
+
+      return this.simulatorRenderer;
     },
 
     //创建iframe

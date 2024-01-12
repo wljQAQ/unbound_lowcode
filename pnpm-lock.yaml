@@ -88,6 +88,19 @@ importers:
         specifier: workspace:*
         version: link:../../types
 
+  packages/plugins/plugin-setter:
+    dependencies:
+      '@unbound_lowcode/constants':
+        specifier: workspace:^
+        version: link:../../constants
+    devDependencies:
+      '@unbound_lowcode/shared':
+        specifier: workspace:*
+        version: link:../../shared
+      '@unbound_lowcode/types':
+        specifier: workspace:*
+        version: link:../../types
+
   packages/plugins/plugin-vue-design-canvas:
     dependencies:
       '@unbound_lowcode/constants':
@@ -166,6 +179,9 @@ importers:
       '@unbound_lowcode/plugin-materials-pane':
         specifier: workspace:*
         version: link:../plugins/plugin-materials-pane
+      '@unbound_lowcode/plugin-setter':
+        specifier: workspace:*
+        version: link:../plugins/plugin-setter
       '@unbound_lowcode/plugin-vue-design-canvas':
         specifier: workspace:*
         version: link:../plugins/plugin-vue-design-canvas

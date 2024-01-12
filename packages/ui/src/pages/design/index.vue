@@ -1,10 +1,10 @@
 <script setup lang="tsx">
 import { materialPanelPlugin } from '@unbound_lowcode/plugin-materials-pane';
 import { vueDesignCanvasPlugin } from '@unbound_lowcode/plugin-vue-design-canvas';
+import { setterPlugin } from '@unbound_lowcode/plugin-setter';
 import naiveUIMaterials from '@unbound_lowcode/naive-ui-materials';
 import { createEngine } from '@unbound_lowcode/engine';
 import App from '../../main';
-
 
 const engine = createEngine();
 
@@ -22,6 +22,8 @@ engine.use({
 engine.use(materialPanelPlugin());
 //渲染插件
 engine.use(vueDesignCanvasPlugin());
+
+engine.use(setterPlugin());
 </script>
 
 <template>

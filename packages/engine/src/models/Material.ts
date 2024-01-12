@@ -6,8 +6,8 @@ export function useMaterialModel(): MaterialModel {
     add(materials) {
       this.materialsMap[materials.name] = materials;
     },
-    getSchemaByNameAndPkg({ comName, pkgName }) {
-      return this.materialsMap[pkgName]?.componentsSchemaMap?.[comName] || false;
+    getSchemaByNameAndPkg({ componentName, packageName }) {
+      return this.materialsMap[packageName]?.componentsSchemaMap?.[componentName] || false;
     }
   };
 }

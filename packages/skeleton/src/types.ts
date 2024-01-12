@@ -9,6 +9,7 @@ export interface Props {
 
 export interface LayoutProps {
   leftArea?: LayoutBaseConfig<LayoutSiderProps>;
+  rightArea?: LayoutBaseConfig<LayoutSiderProps>;
 }
 
 export interface LayoutBaseConfig<T> {

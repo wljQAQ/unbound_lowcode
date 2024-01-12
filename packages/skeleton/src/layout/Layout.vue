@@ -1,6 +1,6 @@
 <script setup lang="ts" name="design">
 import { useSkeletonContextInjector } from '..';
-import { LeftArea, LeftAreaPane, MainArea } from '.';
+import { LeftArea, LeftAreaPane, MainArea, RightArea } from '.';
 import { onClickOutside } from '@vueuse/core';
 import { NLayout, NLayoutHeader, NLayoutContent, NSpace } from 'naive-ui';
 import { shallowRef } from 'vue-demi';
@@ -29,10 +29,12 @@ onClickOutside(leftAreaRef, () => {
         <left-area-pane />
       </div>
 
-      <n-layout>
+      <n-layout has-sider sider-placement="right">
         <n-layout-content>
           <MainArea />
         </n-layout-content>
+
+        <right-area />
       </n-layout>
     </n-layout>
   </n-layout>

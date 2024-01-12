@@ -1,14 +1,16 @@
-import type { MaybeRef } from 'vue-demi';
-import { IPublicPageSchema } from '.';
+import type { Ref, ShallowRef } from 'vue-demi';
+import { IPublicPageSchema, IPublicMaterialsMap } from '.';
 
 export interface SimulatorRenderer {
   run(): void;
-  schema: IPublicPageSchema;
-  setSc
+  schema: Ref<IPublicPageSchema | null>;
+  materialsMap: ShallowRef<IPublicMaterialsMap | null>;
+  setSchema(schema: IPublicPageSchema): void;
+  setMaterialsMap(materialsMap: IPublicMaterialsMap): void;
 }
 
 export interface CanvasModel {
   createIframe(iframe: HTMLIFrameElement): Promise<SimulatorRenderer>;
-  renderSimulator(iframe: HTMLIFrameElement): void;
+  renderSimulator(iframe: HTMLIFrameElement): Promise<SimulatorRenderer>;
   simulatorRenderer: SimulatorRenderer | null;
 }

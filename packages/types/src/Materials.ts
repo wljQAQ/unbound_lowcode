@@ -20,11 +20,11 @@ export interface MaterialItem {
 
 export interface MaterialItemMeta {
   title: string;
-  packageName?: string;
+  packageName: string;
   description?: string;
   document?: string;
   screenShot?: string;
-  componentName?: string;
+  componentName: string;
 }
 
 export interface MaterialGroup {

@@ -4,7 +4,8 @@ export function useSkeletonModel(): SkeletonModel {
   return {
     areas: {
       leftArea: [],
-      mainArea: []
+      mainArea: [],
+      rightArea: []
     },
     add(areaItem) {
       this.areas[areaItem.area]!.push(areaItem);

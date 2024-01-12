@@ -1,6 +1,6 @@
 import { PageModel, IPublicPageSchema } from '@unbound_lowcode/types';
 import { version } from '../../package.json';
-import { reactive } from 'vue-demi';
+import { reactive, watch } from 'vue-demi';
 
 const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
   id: Date.now().toString(),
@@ -13,16 +13,39 @@ const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
   dataSource: {},
   route: '/',
   methods: {},
-  children: []
+  children: [
+    {
+      id: 'Node_Jgeod7R',
+      props: {},
+      componentName: 'NButton',
+      packageName: 'NaiveUI'
+    }
+  ]
 };
 
 export function usePageModel(initSchema?: IPublicPageSchema): PageModel {
   const schema = reactive(initSchema || DEFAULT_PAGE_SCHEMA);
+  window.schema = schema;
+  watch(
+    schema,
+    newV => {
+      console.log(newV, 'schema改变');
+    },
+    { deep: true }
+  );
+
+  watch(
+    window.schema,
+    newV => {
+      console.log('window.schema', newV);
+    },
+    { deep: true }
+  );
 
   return {
     schema,
     insertNodeToPage(node) {
-      this.schema.children.push(node);
+      schema.children.push(node);
     }
   };
 }

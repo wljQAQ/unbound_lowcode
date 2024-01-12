@@ -14,6 +14,7 @@
   "dependencies": {
     "@unbound_lowcode/naive-ui-materials": "workspace:*",
     "@unbound_lowcode/plugin-materials-pane": "workspace:*",
+    "@unbound_lowcode/plugin-setter": "workspace:*",
     "@unbound_lowcode/plugin-vue-design-canvas": "workspace:*",
     "@unbound_lowcode/vue-simulator-renderer": "workspace:*",
     "@unbound_lowcode/shared": "workspace:*",

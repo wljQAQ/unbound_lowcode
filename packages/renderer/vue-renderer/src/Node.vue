@@ -10,6 +10,8 @@ interface Props {
 
 const props = defineProps<Props>();
 
+console.log(props,'node component');
+
 const NodeComponent = defineAsyncComponent(props.component);
 </script>
 

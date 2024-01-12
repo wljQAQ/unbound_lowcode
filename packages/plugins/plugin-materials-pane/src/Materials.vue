@@ -2,17 +2,16 @@
 import { NInput, NGrid, NGi, NButton, NPopover, NCard, NCollapse, NCollapseItem, NImage } from 'naive-ui';
 import { useEngineContext, useDragComponent } from '@unbound_lowcode/shared';
 import { MATERIAL_DESIGN_DND_TYPE } from '@unbound_lowcode/constants';
-import { MaterialItemMeta, IMaterialsApi, MaterialGroup } from '@unbound_lowcode/types';
+import { MaterialItemMeta, MaterialModel, MaterialGroup } from '@unbound_lowcode/types';
 import { shallowRef, ShallowRef, ref } from 'vue-demi';
 
 const ctx = useEngineContext();
-console.log(ctx);
 const { materialGroupList, handleSearchMaterial } = useMaterial(ctx?.material);
 
-const { hoverBtnCurrent, handleEnterBtn, handleLeaveBtn } = useMaterialsButton();
+const { hoverBtnCurrent, onEnterBtn, onLeaveBtn, onDblClickBtn } = useMaterialsButton();
 
 //需要把 物料库的所有分类都整合到一起比较好操作
-function useMaterial(material: IMaterialsApi | undefined) {
+function useMaterial(material: MaterialModel | undefined) {
   let materialGroupList: ShallowRef<MaterialGroup[]> = shallowRef([]);
   let originMaterialGroupList: MaterialGroup[] = []; //即如一下初始化的物料分类列表 用来做筛选
 
@@ -53,20 +52,32 @@ function useMaterial(material: IMaterialsApi | undefined) {
   };
 }
 
+//对按钮的操作
 function useMaterialsButton() {
   const hoverBtnCurrent = ref('');
 
-  function handleEnterBtn(item: MaterialItemMeta) {
+  function onEnterBtn(item: MaterialItemMeta) {
     hoverBtnCurrent.value = item.componentName || '';
   }
-  function handleLeaveBtn() {
+  function onLeaveBtn() {
     hoverBtnCurrent.value = '';
+  }
+
+  function onDblClickBtn(item: MaterialItemMeta) {
+    const schema = ctx.material.getSchemaByNameAndPkg(item);
+    console.log(111, item);
+    if (!schema) return;
+    const node = ctx.node.createNode(schema);
+    ctx.page.insertNodeToPage(node!);
+    // ctx.canvas.simulatorRenderer.update();
+    console.log(ctx);
   }
 
   return {
     hoverBtnCurrent,
-    handleEnterBtn,
-    handleLeaveBtn
+    onEnterBtn,
+    onLeaveBtn,
+    onDblClickBtn
   };
 }
 </script>
@@ -90,8 +101,9 @@ function useMaterialsButton() {
                 class="w-full justify-initial"
                 :size="'small'"
                 :block="true"
-                @mouseenter="handleEnterBtn(component)"
-                @mouseleave="handleLeaveBtn"
+                @mouseenter="onEnterBtn(component)"
+                @mouseleave="onLeaveBtn"
+                @dblclick="onDblClickBtn(component)"
               >
                 <template #icon>
                   <span class="i-mdi:button-pointer text-1.8"></span>

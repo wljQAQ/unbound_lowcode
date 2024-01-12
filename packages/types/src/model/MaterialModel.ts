@@ -1,9 +1,11 @@
 import { Materials, MaterialItemSchema } from '..';
 
+export interface IPublicMaterialsMap {
+  [key: string]: Materials;
+}
+
 export interface MaterialModel {
-  materialsMap: {
-    [key: string]: Materials;
-  };
+  materialsMap: IPublicMaterialsMap;
   add(materials: Materials): void;
-  getSchemaByNameAndPkg({ comName, pkgName }: { comName: string; pkgName: string }): MaterialItemSchema | false;
+  getSchemaByNameAndPkg({ componentName, packageName }: { componentName: string; packageName: string }): MaterialItemSchema | false;
 }

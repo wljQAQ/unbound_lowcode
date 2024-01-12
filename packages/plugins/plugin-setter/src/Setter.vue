@@ -5,18 +5,13 @@ import { MATERIAL_DESIGN_DND_TYPE } from '@unbound_lowcode/constants';
 import { MaterialItemMeta } from '@unbound_lowcode/types';
 
 const engineCtx = useEngineContext();
-const iframeRef = shallowRef<HTMLIFrameElement | null>(null);
 
 nextTick(async () => {
-  const renderer = await engineCtx.canvas.renderSimulator(iframeRef.value!, engineCtx);
-  renderer.setSchema(engineCtx.page.schema);
-  // renderer.setMaterialsMap(engineCtx.material.materialsMap);
-  // console.log(engineCtx);
 });
 </script>
 
 <template>
-  <iframe name="SimulatorRenderer" class="w-full h-full border-none" ref="iframeRef"></iframe>
+  <div>right</div>
 </template>
 
 <style scoped></style>

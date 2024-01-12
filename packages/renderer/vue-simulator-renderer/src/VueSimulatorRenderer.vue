@@ -1,26 +1,24 @@
 <script setup lang="ts">
 import 'virtual:uno.css';
-import { useDrop, useEngineContext } from '@unbound_lowcode/shared';
-import { MATERIAL_DESIGN_DND_TYPE } from '@unbound_lowcode/constants';
-import { MaterialItemMeta, SimulatorRenderer } from '@unbound_lowcode/types';
+import { IPublicPageSchema, SimulatorRenderer, IPublicMaterialsMap } from '@unbound_lowcode/types';
 import { VueRenderer } from '@unbound_lowcode/vue-renderer';
 import { shallowRef } from 'vue-demi';
 
-interface Prop {
-  renderer: SimulatorRenderer;
+interface Props {
+  schema: IPublicPageSchema | null;
+  materialsMap: IPublicMaterialsMap | null;
 }
 
-const props = defineProps<Prop>();
+const props = defineProps<Props>();
 
 const dropRef = shallowRef(null);
-const engineCtx = useEngineContext();
 
-console.log(props.renderer);
+console.log(props, 'si');
 </script>
 
 <template>
   <div class="w-full h-full" ref="dropRef">
-    <VueRenderer :schema="engineCtx?.page.schema" :materialMap="engineCtx?.material.materialsMap" />
+    <VueRenderer :schema="schema" :materialMap="materialsMap" />
   </div>
 </template>
 

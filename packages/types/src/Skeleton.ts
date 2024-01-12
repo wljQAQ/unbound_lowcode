@@ -3,6 +3,7 @@ import type { Component, VNode } from 'vue-demi';
 export interface Areas {
   leftArea?: AreasBaseConfig[];
   mainArea?: AreasBaseConfig[];
+  rightArea?: AreasBaseConfig[];
 }
 
 export interface AreasBaseConfig {

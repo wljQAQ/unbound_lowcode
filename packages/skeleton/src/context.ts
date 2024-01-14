@@ -9,5 +9,5 @@ export function useSkeletonContextProvider(context: SkeletonManager) {
 }
 
 export function useSkeletonContextInjector() {
-  return inject<SkeletonManager>(SkeletonContextSymbol);
+  return inject<SkeletonManager>(SkeletonContextSymbol)!;
 }

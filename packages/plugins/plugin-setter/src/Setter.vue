@@ -5,13 +5,11 @@ import { MATERIAL_DESIGN_DND_TYPE } from '@unbound_lowcode/constants';
 import { MaterialItemMeta } from '@unbound_lowcode/types';
 
 const engineCtx = useEngineContext();
-
-nextTick(async () => {
-});
+console.log(engineCtx.material.materialsMap,'setter');
 </script>
 
 <template>
-  <div>right</div>
+  <div class="w-full">right</div>
 </template>
 
 <style scoped></style>

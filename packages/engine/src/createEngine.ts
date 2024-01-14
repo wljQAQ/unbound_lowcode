@@ -5,11 +5,13 @@ import { default as EngineComponent } from './Engine.vue';
 import { usePageModel, useMaterialModel, useSkeletonModel, useNodeModel, useCanvasModel } from './models';
 
 export function createEngine(): Engine {
+  const material = useMaterialModel();
+
   const engine: Engine = {
     skeleton: useSkeletonModel(),
-    material: useMaterialModel(),
+    material,
     page: usePageModel(),
-    node: useNodeModel(),
+    node: useNodeModel(material),
     canvas: useCanvasModel(),
     vue: {} as App,
     use(plugin, options) {

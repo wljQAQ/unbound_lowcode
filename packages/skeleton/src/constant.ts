@@ -6,5 +6,12 @@ export const DEFAULT_LAYOUT_PROP: LayoutProps = {
       bordered: true
     },
     visible: true
-  }
+  },
+  rightArea: {
+    props: {
+      width: 320,
+      bordered: true
+    },
+    visible: true
+  },
 };

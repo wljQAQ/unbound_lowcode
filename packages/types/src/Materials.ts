@@ -13,9 +13,21 @@ export type MaterialItemMetaOptional = Optional<MaterialItemMeta, 'componentName
 export interface MaterialItem {
   schema: MaterialItemSchema;
   meta: MaterialItemMeta;
+  setter: MaterialItemSetter;
   component: MaterialComponent | string;
   //不写默认就是文件名
   componentName?: string;
+}
+
+export interface MaterialItemSetter {
+  componentName: string;
+  title: string;
+  props: {
+    name: string;
+    propType: string;
+    description:string;
+    defaultValue:string
+  }[];
 }
 
 export interface MaterialItemMeta {

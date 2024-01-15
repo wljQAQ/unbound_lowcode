@@ -8,6 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@unbound_lowcode/constants':
+        specifier: workspace:*
+        version: link:packages/constants
+      '@unbound_lowcode/shared':
+        specifier: workspace:*
+        version: link:packages/shared
+      '@unbound_lowcode/types':
+        specifier: workspace:*
+        version: link:packages/types
       '@vueuse/core':
         specifier: ^10.6.1
         version: 10.6.1(vue@3.3.8)

@@ -18,7 +18,10 @@
     "naive-ui": "^2.35.0",
     "nanoid": "^5.0.4",
     "vue": "^3.3.8",
-    "vue-demi": "^0.14.6"
+    "vue-demi": "^0.14.6",
+    "@unbound_lowcode/types": "workspace:*",
+    "@unbound_lowcode/constants": "workspace:*",
+    "@unbound_lowcode/shared": "workspace:*"
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.55",

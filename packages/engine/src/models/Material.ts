@@ -7,7 +7,16 @@ export function useMaterialModel(): MaterialModel {
       this.materialsMap[materials.name] = materials;
     },
     getSchemaByNameAndPkg({ componentName, packageName }) {
-      return this.materialsMap[packageName]?.componentsSchemaMap?.[componentName] || false;
+      if (!componentName || !packageName) return null;
+      return this.materialsMap[packageName]?.componentsMetaMap?.[componentName].schema;
+    },
+    getMetaByNameAndPkg({ componentName, packageName }) {
+      if (!componentName || !packageName) return null;
+      return this.materialsMap[packageName]?.componentsMetaMap?.[componentName].meta;
+    },
+    getSetterByNameAndPkg({ componentName, packageName }) {
+      if (!componentName || !packageName) return null;
+      return this.materialsMap[packageName]?.componentsMetaMap?.[componentName].setter;
     }
   };
 }

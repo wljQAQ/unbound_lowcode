@@ -1,11 +1,10 @@
-import { NodeModel, IPublicNodeSchema, MaterialModel } from '@unbound_lowcode/types';
+import { NodeModel, IPublicNodeSchema, MaterialModel, MaterialItem } from '@unbound_lowcode/types';
 import { generateUId } from '@unbound_lowcode/shared';
 import { shallowRef } from 'vue';
 
 //节点模型，方便进行节点的操作，
 export function useNodeModel(material: MaterialModel): NodeModel {
-  console.log(material, 'node');
-  const currentNode = shallowRef<IPublicNodeSchema>(null);
+  const currentNode = shallowRef<IPublicNodeSchema | {}>({});
 
   return {
     schema: null,
@@ -24,7 +23,7 @@ export function useNodeModel(material: MaterialModel): NodeModel {
       return material.getMetaByNameAndPkg(node || currentNode.value);
     },
     //拿到节点的配置对象
-    getNodeSetter() {
+    getNodeSetter(node) {
       return material.getSetterByNameAndPkg(node || currentNode.value);
     }
   };

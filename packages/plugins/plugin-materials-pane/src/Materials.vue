@@ -34,7 +34,7 @@ function useMaterial(material: MaterialModel | undefined) {
     }
     const result: MaterialGroup[] = [];
     originMaterialGroupList.forEach(group => {
-      const newChildren = group.children.filter(component => component.title.includes(name));
+      const newChildren = group.children.filter(component => component.meta.title.includes(name));
       if (newChildren.length) {
         result.push({
           ...group,
@@ -94,30 +94,29 @@ function useMaterialsButton() {
       <!-- 分类 -->
       <n-collapse-item v-for="(group, idx) in materialGroupList" :key="idx" :title="group.title" :name="idx.toString()">
         <!-- 组件 -->
-        <n-grid v-for="component in group.children" :key="component.componentName" cols="2" x-gap="10" y-gap="10">
+        <n-grid v-for="component in group.children" :key="component.meta.componentName" cols="2" x-gap="10" y-gap="10">
           <n-gi>
             <use-drag-component :options="{ item: component, type: MATERIAL_DESIGN_DND_TYPE }">
               <n-button
                 class="w-full justify-initial"
                 :size="'small'"
-                :block="true"
-                @mouseenter="onEnterBtn(component)"
+                @mouseenter="onEnterBtn(component.meta)"
                 @mouseleave="onLeaveBtn"
-                @dblclick="onDblClickBtn(component)"
+                @dblclick="onDblClickBtn(component.meta)"
               >
                 <template #icon>
                   <span class="i-mdi:button-pointer text-1.8"></span>
                 </template>
                 <span class="text-ellipsis flex-auto text-left overflow-hidden">
-                  {{ component.title }}
+                  {{ component.meta.title }}
                 </span>
-                <n-popover v-if="hoverBtnCurrent === component.componentName" placement="right">
+                <n-popover v-if="hoverBtnCurrent === component.meta.componentName" placement="right">
                   <template #trigger>
                     <span class="i-mdi:help-circle-outline text-1.8"></span>
                   </template>
-                  <n-card :title="component.title">
-                    {{ component.description }}
-                    <n-image class="block mt-1" v-if="component.screenShot" :src="component.screenShot" lazy />
+                  <n-card :title="component.meta.title">
+                    {{ component.meta.description }}
+                    <n-image class="block mt-1" v-if="component.meta.screenShot" :src="component.meta.screenShot" lazy />
                   </n-card>
                 </n-popover>
               </n-button>

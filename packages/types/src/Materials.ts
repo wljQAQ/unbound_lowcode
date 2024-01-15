@@ -15,33 +15,32 @@ export interface MaterialItem {
   meta: MaterialItemMeta;
   setter: MaterialItemSetter;
   component: MaterialComponent | string;
-  //不写默认就是文件名
-  componentName?: string;
 }
 
 export interface MaterialItemSetter {
-  componentName: string;
+  componentName?: string;
+  packageName?: string;
   title: string;
   props: {
     name: string;
     propType: string;
-    description:string;
-    defaultValue:string
+    description: string;
+    defaultValue: string;
   }[];
 }
 
 export interface MaterialItemMeta {
   title: string;
-  packageName: string;
+  packageName?: string;
   description?: string;
   document?: string;
   screenShot?: string;
-  componentName: string;
+  componentName?: string;
 }
 
 export interface MaterialGroup {
   title: string;
-  children: MaterialItemMeta[];
+  children: MaterialItem[];
 }
 
 export interface Materials {
@@ -52,5 +51,5 @@ export interface Materials {
   //用来描述组件的  分类 -》 组件描述
   componentsGroupMap: Record<string, MaterialGroup>;
   //schemaMap
-  componentsSchemaMap: Record<string, MaterialItemSchema>;
+  componentsMetaMap: Record<string, MaterialItem>;
 }

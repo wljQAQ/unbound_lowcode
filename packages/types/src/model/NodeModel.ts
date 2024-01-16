@@ -1,3 +1,4 @@
+import { ShallowRef } from 'vue-demi';
 import { MaterialItemMeta, MaterialItemSchema, MaterialItem, MaterialItemSetter } from '..';
 
 export interface IPublicNodeSchema {
@@ -7,19 +8,19 @@ export interface IPublicNodeSchema {
   id: string;
 }
 
-export type NodeMap = Record<
-  string,
-  {
-    parent: IPublicNodeSchema;
-    node: IPublicNodeSchema;
-  }
->;
+export interface NodeMapItem {
+  parent: IPublicNodeSchema;
+  node: IPublicNodeSchema;
+}
+
+export type NodeMap = Record<string, NodeMapItem>;
 export interface NodeModel {
-  schema: IPublicNodeSchema | null;
+  currentNode: ShallowRef<IPublicNodeSchema | null>;
   nodeMap: NodeMap;
   createNode(schema: MaterialItemSchema): IPublicNodeSchema | null;
   getNodeMeta(node?: IPublicNodeSchema): MaterialItemMeta | null;
   getNodeSetter(node?: IPublicNodeSchema): MaterialItemSetter | null;
-  setCurrentNode(node: IPublicNodeSchema): void;
+  setCurrentNode(node: IPublicNodeSchema | string): void;
   addNodeMap(node: IPublicNodeSchema, parent: IPublicNodeSchema): void;
+  getNodeMapItem(id?: string): NodeMapItem | void;
 }

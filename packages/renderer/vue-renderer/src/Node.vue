@@ -2,6 +2,7 @@
 import { IPublicNodeSchema } from '@unbound_lowcode/types';
 import type { Component } from 'vue-demi';
 import { defineAsyncComponent } from 'vue-demi';
+import { useEngineContext } from '@unbound_lowcode/shared';
 
 interface Props {
   node: IPublicNodeSchema;
@@ -10,7 +11,11 @@ interface Props {
 
 const props = defineProps<Props>();
 
-console.log(props,'node component');
+const engineCtx = useEngineContext();
+
+engineCtx.node.addNodeMap(props.node, props.node);
+
+console.log(props, 'node component');
 
 const NodeComponent = defineAsyncComponent(props.component);
 </script>

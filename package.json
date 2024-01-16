@@ -14,14 +14,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@unbound_lowcode/constants": "workspace:*",
+    "@unbound_lowcode/shared": "workspace:*",
+    "@unbound_lowcode/types": "workspace:*",
     "@vueuse/core": "^10.6.1",
     "naive-ui": "^2.35.0",
     "nanoid": "^5.0.4",
-    "vue": "^3.3.8",
-    "vue-demi": "^0.14.6",
-    "@unbound_lowcode/types": "workspace:*",
-    "@unbound_lowcode/constants": "workspace:*",
-    "@unbound_lowcode/shared": "workspace:*"
+    "vue": "^3.4.14",
+    "vue-demi": "^0.14.6"
   },
   "devDependencies": {
     "@iconify-json/mdi": "^1.1.55",

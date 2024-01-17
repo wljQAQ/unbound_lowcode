@@ -6,9 +6,11 @@ import { MaterialComponentModules, MaterialGroupModules, Materials } from '@unbo
 function loadMaterial(): Materials {
   const groupModules: MaterialGroupModules = import.meta.glob('../src/*/index.ts', { eager: true });
 
-  const componentModules: MaterialComponentModules = import.meta.glob('../src/*/*/index.ts', {
+  const componentModules: MaterialComponentModules = import.meta.glob(['../src/*/*/index.ts', '../src/*/*/index.tsx'], {
     eager: true
   });
+
+  console.log(groupModules, 111);
 
   const componentsMap: Materials['componentsMap'] = {};
   const componentsGroupMap: Materials['componentsGroupMap'] = {};

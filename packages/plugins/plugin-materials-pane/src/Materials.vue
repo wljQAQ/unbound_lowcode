@@ -105,7 +105,7 @@ function useMaterialsButton() {
                 @dblclick="onDblClickBtn(component.meta)"
               >
                 <template #icon>
-                  <span class="i-mdi:button-pointer text-1.8"></span>
+                  <component :is="component.meta.icon" />
                 </template>
                 <span class="text-ellipsis flex-auto text-left overflow-hidden">
                   {{ component.meta.title }}

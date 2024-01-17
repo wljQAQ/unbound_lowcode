@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import vueJsx from '@vitejs/plugin-vue-jsx';
 import vue from '@vitejs/plugin-vue';
 import path from 'path';
 import dts from 'vite-plugin-dts';
@@ -10,7 +11,8 @@ export default defineConfig({
     vue(),
     dts({
       rollupTypes: true
-    })
+    }),
+    vueJsx()
   ],
   define: {
     'process.env': {}

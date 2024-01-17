@@ -36,6 +36,7 @@ export interface MaterialItemMeta {
   document?: string;
   screenShot?: string;
   componentName?: string;
+  icon?: string | SVGAElement | Component;
 }
 
 export interface MaterialGroup {

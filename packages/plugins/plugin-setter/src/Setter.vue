@@ -3,6 +3,8 @@ import { computed } from 'vue-demi';
 import { NTabs, NTabPane } from 'naive-ui';
 import { useEngineContext } from '@unbound_lowcode/shared';
 import { useSetterProvider, SetterContext } from './context';
+import PropsSetter from './components/PropsSetter/index.vue';
+import StyleSetter from './components/StyleSetter/index.vue';
 
 const engineCtx = useEngineContext();
 
@@ -17,8 +19,8 @@ useSetterProvider({ schema, setter, meta } as SetterContext);
   <div v-if="setter && meta && schema" class="w-full text-left p-2">
     <div>{{ setter.title }}</div>
     <n-tabs type="segment" animated size="small" :default-value="'props'">
-      <n-tab-pane name="props" tab="属性"> {{ schema }} </n-tab-pane>
-      <n-tab-pane name="style" tab="样式"> 样式 </n-tab-pane>
+      <n-tab-pane name="props" tab="属性"> <PropsSetter /> </n-tab-pane>
+      <n-tab-pane name="style" tab="样式"> <StyleSetter /> </n-tab-pane>
     </n-tabs>
   </div>
   <div v-else class="mt-10 text-gray">请在左侧画布选中节点</div>

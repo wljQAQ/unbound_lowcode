@@ -13,10 +13,13 @@ export default defineConfig({
         iconCustomizer(collection, icon, props) {
           // 自定义此集合中的 @iconify 图标
           if (collection === 'mdi') {
-            props.width = '2em';
-            props.height = '2em';
+            props.width = '14px';
+            props.height = '14px';
           }
         }
+      },
+      extraProperties: {
+        display: 'inline-block'
       }
     })
   ],

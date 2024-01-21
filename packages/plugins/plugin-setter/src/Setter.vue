@@ -16,7 +16,7 @@ useSetterProvider({ schema, setter, meta } as SetterContext);
 </script>
 
 <template>
-  <div v-if="setter && meta && schema" class="w-full text-left p-2">
+  <div v-if="setter && meta && schema" class="w-full text-left py-2">
     <div>{{ setter.title }}</div>
     <n-tabs type="segment" animated size="small" :default-value="'props'">
       <n-tab-pane name="props" tab="属性"> <PropsSetter /> </n-tab-pane>

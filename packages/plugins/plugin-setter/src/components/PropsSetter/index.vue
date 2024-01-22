@@ -9,7 +9,7 @@ const { meta, schema, setter } = useSetterInjection();
 const { copy, isSupported } = useClipboard();
 
 const { success } = useMessage();
-console.log(setterMap, 'setterMap');
+console.log(setterMap, 'setterMap', setter);
 function copyId() {
   copy(schema.value.id);
   success('复制成功');

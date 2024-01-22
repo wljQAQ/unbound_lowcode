@@ -1,7 +1,15 @@
-function createSetterMap() {
-  const setterMap = {};
+import { Component } from 'vue';
 
-  const setterComMap = import.meta.glob('./*/index.vue', { eager: true });
+interface SetterModule {
+  default: Component;
+}
+
+type SetterMap = Record<string, Component>;
+
+function createSetterMap(): SetterMap {
+  const setterMap: SetterMap = {};
+
+  const setterComMap = import.meta.glob<SetterModule>('./*/index.vue', { eager: true });
 
   for (const key in setterComMap) {
     const item = setterComMap[key].default;

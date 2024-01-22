@@ -29,7 +29,7 @@ export default {
     title: '按钮',
     props: [
       {
-        name: '测试',
+        title: '测试',
         propType: 'string',
         description: '',
         defaultValue: '按钮'

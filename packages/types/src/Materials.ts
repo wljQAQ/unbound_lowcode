@@ -22,7 +22,7 @@ export interface MaterialItemSetter {
   packageName?: string;
   title: string;
   props: {
-    name: string;
+    title: string;
     propType: string;
     description: string;
     defaultValue: string;

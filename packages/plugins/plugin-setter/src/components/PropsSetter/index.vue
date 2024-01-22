@@ -3,6 +3,7 @@ import { useSetterInjection } from '../../context';
 import { NGrid, NGi, useMessage, NCollapseItem, NCollapse } from 'naive-ui';
 import { useClipboard } from '@vueuse/core';
 import { setterMap } from '../../Setters';
+import ConfigItem from './ConfigItem.vue';
 
 const { meta, schema, setter } = useSetterInjection();
 
@@ -33,8 +34,11 @@ function copyId() {
 
     <n-collapse class="px-4" arrow-placement="right">
       <n-collapse-item title="基础属性" name="1">
-        <div>基础</div>
-        <component :is="setterMap.StringSetter"></component>
+        <template v-for="s in setter.props">
+          <config-item v-bind="s">
+            <component :is="setterMap.StringSetter"></component>
+          </config-item>
+        </template>
       </n-collapse-item>
       <n-collapse-item title="高级属性" name="2">
         <div>很好</div>

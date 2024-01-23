@@ -8,8 +8,8 @@ const props = defineProps<{
 </script>
 
 <template>
-  <n-grid>
-    <n-gi :span="6">1111</n-gi>
+  <n-grid class="px-12px py-5px">
+    <n-gi :span="6" class="pt-5px text-12px">{{ title }}</n-gi>
     <n-gi :span="18"><slot></slot></n-gi>
   </n-grid>
 </template>

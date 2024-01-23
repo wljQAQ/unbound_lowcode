@@ -32,7 +32,7 @@ function copyId() {
       </n-gi>
     </n-grid>
 
-    <n-collapse class="px-4" arrow-placement="right">
+    <n-collapse arrow-placement="right">
       <n-collapse-item title="基础属性" name="1">
         <template v-for="s in setter.props">
           <config-item v-bind="s">
@@ -50,4 +50,8 @@ function copyId() {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+:deep(.n-collapse-item__header) {
+  padding: 16px 12px 0px 12px !important;
+}
+</style>

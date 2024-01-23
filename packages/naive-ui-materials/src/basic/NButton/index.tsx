@@ -29,7 +29,11 @@ export default {
     title: '按钮',
     props: [
       {
-        title: '测试',
+        name: 'children',
+        title: {
+          label:'按钮内容',
+          tip:''
+        },
         propType: 'string',
         description: '',
         defaultValue: '按钮'

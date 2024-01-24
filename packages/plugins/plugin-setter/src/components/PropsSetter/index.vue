@@ -36,7 +36,7 @@ function copyId() {
       <n-collapse-item title="基础属性" name="1">
         <template v-for="s in setter.props">
           <config-item v-bind="s">
-            <component :is="setterMap.StringSetter"></component>
+            <component :is="setterMap.StringSetter" :setter="s" :schema="schema"></component>
           </config-item>
         </template>
       </n-collapse-item>

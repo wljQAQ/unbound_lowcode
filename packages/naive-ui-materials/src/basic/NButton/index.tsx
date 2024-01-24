@@ -30,12 +30,9 @@ export default {
     props: [
       {
         name: 'children',
-        title: {
-          label:'按钮内容',
-          tip:''
-        },
+        title: '内容',
         propType: 'string',
-        description: '',
+        description: '字段:children',
         defaultValue: '按钮'
       }
     ]

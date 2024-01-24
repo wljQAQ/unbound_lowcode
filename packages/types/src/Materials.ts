@@ -26,6 +26,7 @@ export interface MaterialItemSetter {
     propType: string;
     description: string;
     defaultValue: string;
+    name: string;
   }[];
 }
 

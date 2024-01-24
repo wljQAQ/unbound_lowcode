@@ -4,12 +4,12 @@ import { useAttrs } from 'vue-demi';
 
 const attrs = useAttrs();
 
-console.log('按钮组件渲染');
+console.log('按钮组件渲染', attrs);
 </script>
 
 <template>
   <NButton>
-    {{ attrs.content || '按钮' }}
+    {{ attrs.children || '按钮' }}
   </NButton>
 </template>
 

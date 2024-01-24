@@ -16,9 +16,11 @@ const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
   children: [
     {
       id: 'Node_Jgeod7R',
-      props: {},
       componentName: 'NButton',
-      packageName: 'NaiveUI'
+      packageName: 'NaiveUI',
+      props: {
+        children: '测试按钮'
+      }
     }
   ]
 };

@@ -6,6 +6,8 @@ import naiveUIMaterials from '@unbound_lowcode/naive-ui-materials';
 import { createEngine } from '@unbound_lowcode/engine';
 import App from '../../main';
 
+import { showMessage } from '../../components/Message/index.js';
+
 const engine = createEngine();
 
 //注册引擎
@@ -27,7 +29,8 @@ engine.use(setterPlugin());
 </script>
 
 <template>
-  <Engine></Engine>
+  <!-- <Engine></Engine> -->
+  <button @click="showMessage">测试message</button>
 </template>
 
 <style scoped></style>

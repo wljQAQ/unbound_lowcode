@@ -2,7 +2,7 @@
 import { IPublicNodeSchema, MaterialItemSetter } from '@unbound_lowcode/types';
 import { NInput } from 'naive-ui';
 
-type ObjectType = typeof MaterialItemSetter['props'][number];
+type ObjectType = (typeof MaterialItemSetter)['props'][number];
 const props = defineProps<{
   setter: ObjectType;
   schema: IPublicNodeSchema;
@@ -10,7 +10,8 @@ const props = defineProps<{
 </script>
 
 <template>
-  <n-input v-model:value="schema.props[setter.]" />
+  <!-- <n-input v-model:value="schema.props[setter.]" /> -->
+  <n-input />
 </template>
 
 <style scoped></style>

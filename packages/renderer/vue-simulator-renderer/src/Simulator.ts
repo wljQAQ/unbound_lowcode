@@ -15,6 +15,14 @@ function createSimulatorRenderer(): SimulatorRenderer {
   let container;
   let app;
 
+  watch(
+    () => window.parent.schema,
+    () => {
+      console.log(1111);
+    },
+    { immediate: true, deep: true }
+  );
+
   return {
     schema,
     materialsMap,

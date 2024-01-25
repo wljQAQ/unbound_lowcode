@@ -21,13 +21,15 @@ export interface MaterialItemSetter {
   componentName?: string;
   packageName?: string;
   title: string;
-  props: {
-    title: string;
-    propType: string;
-    description: string;
-    defaultValue: string;
-    name: string;
-  }[];
+  props: SetterProp[];
+}
+
+export interface SetterProp {
+  title: string;
+  propType: string;
+  description: string;
+  defaultValue: string;
+  name: string;
 }
 
 export interface MaterialItemMeta {

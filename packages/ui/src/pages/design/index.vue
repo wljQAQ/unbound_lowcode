@@ -6,7 +6,7 @@ import naiveUIMaterials from '@unbound_lowcode/naive-ui-materials';
 import { createEngine } from '@unbound_lowcode/engine';
 import App from '../../main';
 
-import { showMessage } from '../../components/Message/index.js';
+// import { showMessage } from '../../components/Message/index.js';
 
 const engine = createEngine();
 
@@ -29,8 +29,8 @@ engine.use(setterPlugin());
 </script>
 
 <template>
-  <!-- <Engine></Engine> -->
-  <button @click="showMessage">测试message</button>
+  <Engine></Engine>
+  <!-- <button @click="showMessage">测试message</button> -->
 </template>
 
 <style scoped></style>

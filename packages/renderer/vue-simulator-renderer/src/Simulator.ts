@@ -2,26 +2,13 @@ import { createApp, ref, reactive, shallowRef, watch, computed } from 'vue-demi'
 import { default as VueSimulatorRenderer } from './VueSimulatorRenderer.vue';
 import { SimulatorRenderer } from '@unbound_lowcode/types';
 import { engineContextSymbol } from '@unbound_lowcode/constants';
-
-function createPageModel() {
-  return reactive({
-    schema
-  });
-}
+import type { App } from 'vue-demi';
 
 function createSimulatorRenderer(): SimulatorRenderer {
-  const schema = reactive(window.parent.schema);
+  const schema = ref(window.parent.schema);
   const materialsMap = shallowRef(null);
-  let container;
-  let app;
-
-  watch(
-    () => window.parent.schema,
-    () => {
-      console.log(1111);
-    },
-    { immediate: true, deep: true }
-  );
+  let container: HTMLElement;
+  let app: App;
 
   return {
     schema,

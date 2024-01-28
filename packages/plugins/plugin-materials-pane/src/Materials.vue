@@ -65,12 +65,10 @@ function useMaterialsButton() {
 
   function onDblClickBtn(item: MaterialItemMeta) {
     const schema = ctx.material.getSchemaByNameAndPkg(item);
-    console.log(111, item);
     if (!schema) return;
     const node = ctx.node.createNode(schema);
-    ctx.page.insertNodeToPage(node!);
-    // ctx.canvas.simulatorRenderer.update();
-    console.log(ctx);
+    const test = ctx.page.insertNodeToPage(node!);
+    // ctx.canvas.simulatorRenderer?.setSchema(test);
   }
 
   return {

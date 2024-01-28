@@ -8,7 +8,10 @@ import StyleSetter from './components/StyleSetter/index.vue';
 
 const engineCtx = useEngineContext();
 
-const schema = computed(() => engineCtx.node.currentNode.value);
+const schema = computed(() => {
+  console.log(engineCtx.node.currentNode.value);
+  return engineCtx.node.currentNode.value;
+});
 const setter = computed(() => engineCtx.node.getNodeSetter());
 const meta = computed(() => engineCtx.node.getNodeMeta());
 
@@ -16,7 +19,7 @@ useSetterProvider({ schema, setter, meta } as SetterContext);
 </script>
 
 <template>
-  <div v-if="setter && meta && schema" class="w-full text-left py-2">
+  <div :key="schema.id" v-if="setter && meta && schema" class="w-full text-left py-2">
     <div>{{ setter.title }}</div>
     <n-tabs type="segment" animated size="small" :default-value="'props'">
       <n-tab-pane name="props" tab="属性"> <PropsSetter /> </n-tab-pane>

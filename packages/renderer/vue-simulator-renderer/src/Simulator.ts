@@ -36,6 +36,8 @@ function createSimulatorRenderer(): SimulatorRenderer {
       this.mount();
     },
     setSchema(_schema) {
+      console.log(_schema, 'change schema');
+      // schema.value = JSON.parse(JSON.stringify(_schema));
       schema.value = _schema;
     },
     setMaterialsMap(materialsMap) {

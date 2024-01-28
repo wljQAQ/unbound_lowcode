@@ -9,9 +9,12 @@
   "keywords": [],
   "license": "ISC",
   "devDependencies": {
-    "@unbound_lowcode/types": "workspace:*",
-    "@unbound_lowcode/skeleton": "workspace:*",
+    "@unbound_lowcode/constants": "workspace:*",
     "@unbound_lowcode/shared": "workspace:*",
-    "@unbound_lowcode/constants": "workspace:*"
+    "@unbound_lowcode/skeleton": "workspace:*",
+    "@unbound_lowcode/types": "workspace:*"
+  },
+  "dependencies": {
+    "immer": "^10.0.3"
   }
 }

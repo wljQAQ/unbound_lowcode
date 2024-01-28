@@ -1,6 +1,7 @@
 import { PageModel, IPublicPageSchema } from '@unbound_lowcode/types';
 import { version } from '../../package.json';
 import { reactive, watch } from 'vue-demi';
+import { useImmer } from '../useImmer';
 
 const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
   id: Date.now().toString(),
@@ -19,35 +20,27 @@ const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
       componentName: 'NButton',
       packageName: 'NaiveUI',
       props: {
-        children: '测试按钮'
+        content: '测试按钮'
       }
     }
   ]
 };
 
 export function usePageModel(initSchema?: IPublicPageSchema): PageModel {
-  const schema = reactive(initSchema || DEFAULT_PAGE_SCHEMA);
-  window.schema = schema;
-  watch(
-    schema,
-    newV => {
-      console.log(newV, 'schema改变');
-    },
-    { deep: true }
-  );
+  // const [schema, updateSchema] = useImmer<IPublicPageSchema>(initSchema || DEFAULT_PAGE_SCHEMA);
 
-  watch(
-    window.schema,
-    newV => {
-      console.log('window.schema', newV);
-    },
-    { deep: true }
-  );
+  // const schema = reactive(initSchema || DEFAULT_PAGE_SCHEMA);
+  const schema = ref(initSchema || DEFAULT_PAGE_SCHEMA);
+  window.schema = schema.value;
 
   return {
-    schema,
+    schema: schema.value,
     insertNodeToPage(node) {
-      schema.children.push(node);
+      schema.value.children.push(node);
+      return schema.value;
+    },
+    updateSchema(){
+      
     }
   };
 }

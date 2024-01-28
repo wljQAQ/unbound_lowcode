@@ -23,13 +23,15 @@ export default {
     )
   },
   schema: {
-    props: {}
+    props: {
+      content: '按钮'
+    }
   },
   setter: {
     title: '按钮',
     props: [
       {
-        name: 'children',
+        name: 'content',
         title: '内容',
         propType: 'string',
         description: '字段:children',

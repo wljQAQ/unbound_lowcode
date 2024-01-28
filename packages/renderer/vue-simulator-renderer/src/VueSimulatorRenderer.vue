@@ -2,7 +2,7 @@
 import 'virtual:uno.css';
 import { IPublicPageSchema, SimulatorRenderer, IPublicMaterialsMap, NodeMapItem } from '@unbound_lowcode/types';
 import { VueRenderer } from '@unbound_lowcode/vue-renderer';
-import { shallowRef } from 'vue-demi';
+import { computed, shallowRef } from 'vue-demi';
 import { NODE_DATATYPE_ID } from '@unbound_lowcode/constants';
 import { useEngineContext } from '@unbound_lowcode/shared';
 
@@ -20,6 +20,11 @@ const props = defineProps<Props>();
 const dropRef = shallowRef(null);
 
 console.log(props, 'si');
+
+const schema2 = computed(() => {
+  console.log('computed schema2', props.schema.value);
+  return props.schema.value;
+});
 
 function getNodeDom(dom: HTMLElement): HTMLElement | null {
   return dom.closest(`[${NODE_DATATYPE_ID}]`);
@@ -41,13 +46,12 @@ function onMousemove(e: MouseEvent) {
   const nodeId = getNodeIdByDom(e.target as HTMLElement);
   if (!nodeId) return;
   engineCtx.node.setCurrentNode(nodeId);
-  console.log(engineCtx.node);
 }
 </script>
 
 <template>
   <div class="w-full h-full" ref="dropRef">
-    <VueRenderer :schema="schema" :materialMap="materialsMap" @click="onMousemove" />
+    <VueRenderer :schema="schema2" :materialMap="materialsMap" @click="onMousemove" />
   </div>
 </template>
 

@@ -4,16 +4,23 @@ import { NGrid, NGi, useMessage, NCollapseItem, NCollapse } from 'naive-ui';
 import { useClipboard } from '@vueuse/core';
 import { setterMap } from '../../Setters';
 import ConfigItem from './ConfigItem.vue';
+import { useEngineContext } from '@unbound_lowcode/shared';
 
 const { meta, schema, setter } = useSetterInjection();
 
 const { copy, isSupported } = useClipboard();
 
+const ctx = useEngineContext();
+
 const { success } = useMessage();
-console.log(setterMap, 'setterMap', setter);
 function copyId() {
   copy(schema.value.id);
   success('复制成功');
+}
+
+function onChange(val) {
+  // console.log(ctx.page.schema);
+  // ctx.canvas.simulatorRenderer?.setSchema(ctx.page.schema);
 }
 </script>
 
@@ -36,7 +43,7 @@ function copyId() {
       <n-collapse-item title="基础属性" name="1">
         <template v-for="s in setter.props">
           <config-item v-bind="s">
-            <component :is="setterMap.StringSetter" :setter="s" :schema="schema"></component>
+            <component :is="setterMap.StringSetter" :setter="s" :schema="schema" @input="onChange"></component>
           </config-item>
         </template>
       </n-collapse-item>

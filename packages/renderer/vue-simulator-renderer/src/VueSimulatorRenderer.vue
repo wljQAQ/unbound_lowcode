@@ -51,7 +51,8 @@ function onMousemove(e: MouseEvent) {
 
 <template>
   <div class="w-full h-full" ref="dropRef">
-    <VueRenderer :schema="schema2" :materialMap="materialsMap" @click="onMousemove" />
+    {{ schema }}
+    <VueRenderer :schema="schema" :materialMap="materialsMap" @click="onMousemove" />
   </div>
 </template>
 

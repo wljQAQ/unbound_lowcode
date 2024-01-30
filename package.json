@@ -10,6 +10,7 @@
   "packageManager": "pnpm@8.7.6",
   "scripts": {
     "dev": "concurrently \"pnpm run --filter ui dev\" \"pnpm run --filter  vue-simulator-renderer dev\"",
+
     "build": "vite build",
     "preview": "vite preview"
   },

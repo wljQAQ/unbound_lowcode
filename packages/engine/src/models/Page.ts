@@ -36,10 +36,15 @@ export function usePageModel(initSchema?: IPublicPageSchema): PageModel {
   console.log(schema);
   window.schema = schema.value;
 
+  setTimeout(() => {
+    schema.value.children[0].props.content = Date.now();
+    window.SimulatorRenderer.updateSchema();
+  }, 1000);
+
   watch(
     schema,
-    () => {
-      console.log('watch ');
+    val => {
+      console.log('watch ', val);
       // window.SimulatorRenderer.updateSchema();
     },
     { deep: true }
@@ -52,8 +57,8 @@ export function usePageModel(initSchema?: IPublicPageSchema): PageModel {
       return schema.value;
     },
     updateSchema() {
-      triggerRef(schema);
-      window.SimulatorRenderer.updateSchema(Object.assign({}, schema.value));
+      // triggerRef(schema);
+      window.SimulatorRenderer.updateSchema();
     }
   };
 }

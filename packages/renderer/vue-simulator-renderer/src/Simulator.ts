@@ -6,19 +6,23 @@ import type { App } from 'vue-demi';
 import { produce } from 'immer';
 
 function createSimulatorRenderer(): SimulatorRenderer {
-  const schema = ref(window.parent.schema);
+  // const schema = ref(window.parent.schema);
+  const schema = shallowRef(window.parent.schema);
   const materialsMap = shallowRef(null);
   let container: HTMLElement;
   let app: App;
 
+  // window.updateSchema = _schema => {
+  //   // const result = produce(toRaw(window.parent.schema), draft => {
+  //   //   draft.children[0].props.content = 123;
+  //   // });
+  //   schema.value = _schema;
+  //   // console.log(_schema === schema.value);
+  //   // schema.value = JSON.parse(JSON.stringify(_schema));
+  //   // triggerRef(schema);
+  // };
   window.updateSchema = _schema => {
-    // const result = produce(toRaw(window.parent.schema), draft => {
-    //   draft.children[0].props.content = 123;
-    // });
-    schema.value = Object.assign({});
-    // console.log(_schema === schema.value);
-    schema.value = JSON.parse(JSON.stringify(_schema));
-    // triggerRef(schema);
+    triggerRef(schema);
   };
 
   return {

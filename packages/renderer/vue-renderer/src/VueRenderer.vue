@@ -12,7 +12,16 @@ interface Props {
 }
 const materialMap2 = Material.componentsMap;
 
-defineProps<Props>();
+const props = defineProps<Props>();
+watch(
+  () => props.schema,
+  () => {
+    console.log('vuerender watch schema');
+  },
+  { deep: true }
+);
+
+console.log('vuerender renderer');
 </script>
 
 <template>

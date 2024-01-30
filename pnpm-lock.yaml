@@ -20,6 +20,9 @@ importers:
       '@vueuse/core':
         specifier: ^10.6.1
         version: 10.6.1(vue@3.4.14)
+      immer:
+        specifier: ^10.0.3
+        version: 10.0.3
       naive-ui:
         specifier: ^2.35.0
         version: 2.35.0(vue@3.4.14)
@@ -163,6 +166,9 @@ importers:
       '@unbound_lowcode/vue-renderer':
         specifier: workspace:*
         version: link:../vue-renderer
+      immer:
+        specifier: ^10.0.3
+        version: 10.0.3
 
   packages/shared:
     devDependencies:

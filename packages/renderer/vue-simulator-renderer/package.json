@@ -10,10 +10,11 @@
   "keywords": [],
   "license": "ISC",
   "dependencies": {
-    "@unbound_lowcode/types": "workspace:*",
     "@unbound_lowcode/constants": "workspace:*",
+    "@unbound_lowcode/engine": "workspace:*",
     "@unbound_lowcode/shared": "workspace:*",
+    "@unbound_lowcode/types": "workspace:*",
     "@unbound_lowcode/vue-renderer": "workspace:*",
-    "@unbound_lowcode/engine": "workspace:*"
+    "immer": "^10.0.3"
   }
 }

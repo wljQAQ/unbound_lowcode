@@ -18,7 +18,7 @@ engineCtx.node.addNodeMap(props.node, props.node);
 console.log(props, 'node component');
 
 watch(
-  () => props.node,
+  () => props.node.props,
   a => {
     console.log('node change', a);
   },

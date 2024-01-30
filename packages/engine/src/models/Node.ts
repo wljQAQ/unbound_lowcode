@@ -1,6 +1,6 @@
 import { NodeModel, IPublicNodeSchema, MaterialModel, MaterialItem } from '@unbound_lowcode/types';
 import { generateUId } from '@unbound_lowcode/shared';
-import { shallowRef } from 'vue';
+import { ref, shallowRef } from 'vue';
 
 //节点模型，方便进行节点的操作，
 export function useNodeModel(material: MaterialModel): NodeModel {

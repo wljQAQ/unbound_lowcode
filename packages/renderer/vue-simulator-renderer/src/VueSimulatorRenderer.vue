@@ -2,30 +2,14 @@
 import 'virtual:uno.css';
 import { IPublicPageSchema, SimulatorRenderer, IPublicMaterialsMap, NodeMapItem } from '@unbound_lowcode/types';
 import { VueRenderer } from '@unbound_lowcode/vue-renderer';
-import { ShallowRef, computed, shallowRef } from 'vue-demi';
+import { ShallowRef, computed, shallowRef, triggerRef } from 'vue';
 import { NODE_DATATYPE_ID } from '@unbound_lowcode/constants';
 import { useEngineContext } from '@unbound_lowcode/shared';
 
-interface Props {
-  schema: ShallowRef<IPublicPageSchema | null>;
-  materialsMap: IPublicMaterialsMap | null;
-}
-
 const engineCtx = useEngineContext();
-
-console.log(useEngineContext(), 'vueSimulator Context');
-
-const props = defineProps<Props>();
 
 const dropRef = shallowRef(null);
 
-console.log(props, 'si');
-
-const schema2 = computed(() => {
-  console.log('computed schema2', props.schema.value);
-  return props.schema;
-});
-console.log(schema2, 'schema2');
 function getNodeDom(dom: HTMLElement): HTMLElement | null {
   return dom.closest(`[${NODE_DATATYPE_ID}]`);
 }
@@ -43,22 +27,23 @@ function getNodeMapItemByDom(dom: HTMLElement): NodeMapItem | void {
 }
 
 function onMousemove(e: MouseEvent) {
-  console.log(111);
   const nodeId = getNodeIdByDom(e.target as HTMLElement);
   if (!nodeId) return;
   engineCtx.node.setCurrentNode(nodeId);
 }
 
-const schema121 = window.schema;
+const schema = engineCtx.page.schema;
+const materialMap = engineCtx.material.materialsMap;
 
-const b = window.b;
+window.updateSchema = _schema => {
+  console.log(111);
+  triggerRef(schema);
+};
 </script>
 
 <template>
   <div class="w-full h-full" ref="dropRef">
-    {{ b }}
-    {{ schema121 }}
-    <VueRenderer :schema="schema" :materialMap="materialsMap" @click="onMousemove" />
+    <VueRenderer :schema="schema" :materialMap="materialMap" @click="onMousemove" />
   </div>
 </template>
 

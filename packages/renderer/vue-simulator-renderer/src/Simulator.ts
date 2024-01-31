@@ -3,43 +3,22 @@ import { default as VueSimulatorRenderer } from './VueSimulatorRenderer.vue';
 import { SimulatorRenderer } from '@unbound_lowcode/types';
 import { engineContextSymbol } from '@unbound_lowcode/constants';
 import type { App } from 'vue-demi';
-import { produce } from 'immer';
 
+//模拟器有两个更新的地方  一个是从左边拖拽组件到右边  一个 是从setter里面直接修改
 function createSimulatorRenderer(): SimulatorRenderer {
-  // const schema = ref(window.parent.schema);
-  console.log(window.parent.schema);
-  const schema = shallowRef({ ...window.parent.schema });
+  const schema = shallowRef(null);
   const materialsMap = shallowRef(null);
   let container: HTMLElement;
   let app: App;
-  window.schema = schema;
-
-  const b = shallowRef(JSON.parse(JSON.stringify(window.parent.schema)));
-
-  window.b = b;
-
   // window.updateSchema = _schema => {
-  //   // const result = produce(toRaw(window.parent.schema), draft => {
-  //   //   draft.children[0].props.content = 123;
-  //   // });
-  //   schema.value = _schema;
-  //   // console.log(_schema === schema.value);
-  //   // schema.value = JSON.parse(JSON.stringify(_schema));
-  //   // triggerRef(schema);
+  //   console.log(111);
+  //   triggerRef(schema);
   // };
-  window.updateSchema = _schema => {
-    triggerRef(schema);
-  };
 
   return {
     schema,
     materialsMap,
     init() {
-      setTimeout(() => {
-        // console.log(window.parent.test_customRef2);
-        // window.parent.test_customRef2.s = 12312312;
-        // window.parent.schema.id = Date.now();
-      }, 1000);
       container = document.createElement('div');
       container.id = 'app';
       document.body.appendChild(container);

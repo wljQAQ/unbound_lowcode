@@ -1,6 +1,6 @@
 import { PageModel, IPublicPageSchema } from '@unbound_lowcode/types';
 import { version } from '../../package.json';
-import { reactive, watch, ref, customRef, shallowRef, triggerRef } from 'vue-demi';
+import { reactive, watch, ref, customRef, shallowRef, triggerRef } from 'vue';
 import { useImmer } from '../useImmer';
 
 const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
@@ -27,28 +27,7 @@ const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
 };
 
 export function usePageModel(initSchema?: IPublicPageSchema): PageModel {
-  // const [schema, updateSchema] = useImmer<IPublicPageSchema>(initSchema || DEFAULT_PAGE_SCHEMA);
-
-  // const schema = reactive(initSchema || DEFAULT_PAGE_SCHEMA);
   const schema = shallowRef(initSchema || DEFAULT_PAGE_SCHEMA);
-  // const schema = shallowRef(initSchema || DEFAULT_PAGE_SCHEMA);
-
-  console.log(schema);
-  window.schema = schema.value;
-
-  // setTimeout(() => {
-  //   schema.value.children[0].props.content = Date.now();
-  //   window.SimulatorRenderer.updateSchema();
-  // }, 1000);
-
-  watch(
-    schema,
-    val => {
-      console.log('watch ', val);
-      // window.SimulatorRenderer.updateSchema();
-    },
-    { deep: true }
-  );
 
   return {
     schema: schema.value,

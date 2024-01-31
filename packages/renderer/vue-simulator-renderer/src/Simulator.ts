@@ -7,10 +7,16 @@ import { produce } from 'immer';
 
 function createSimulatorRenderer(): SimulatorRenderer {
   // const schema = ref(window.parent.schema);
-  const schema = shallowRef(window.parent.schema);
+  console.log(window.parent.schema);
+  const schema = shallowRef({ ...window.parent.schema });
   const materialsMap = shallowRef(null);
   let container: HTMLElement;
   let app: App;
+  window.schema = schema;
+
+  const b = shallowRef(JSON.parse(JSON.stringify(window.parent.schema)));
+
+  window.b = b;
 
   // window.updateSchema = _schema => {
   //   // const result = produce(toRaw(window.parent.schema), draft => {
@@ -44,7 +50,7 @@ function createSimulatorRenderer(): SimulatorRenderer {
       console.log(ctx);
     },
     mount(ctx) {
-      app = createApp(VueSimulatorRenderer, { schema, materialsMap });
+      app = createApp(VueSimulatorRenderer);
       app.provide(engineContextSymbol, ctx);
       app.mount(container);
     },

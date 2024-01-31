@@ -4,7 +4,7 @@ import { ref, shallowRef } from 'vue';
 
 //节点模型，方便进行节点的操作，
 export function useNodeModel(material: MaterialModel): NodeModel {
-  const currentNode = shallowRef<IPublicNodeSchema | null>(null);
+  const currentNode = ref<IPublicNodeSchema | null>(null);
 
   return {
     nodeMap: {},

@@ -30,16 +30,16 @@ export function usePageModel(initSchema?: IPublicPageSchema): PageModel {
   // const [schema, updateSchema] = useImmer<IPublicPageSchema>(initSchema || DEFAULT_PAGE_SCHEMA);
 
   // const schema = reactive(initSchema || DEFAULT_PAGE_SCHEMA);
-  const schema = ref(initSchema || DEFAULT_PAGE_SCHEMA);
+  const schema = shallowRef(initSchema || DEFAULT_PAGE_SCHEMA);
   // const schema = shallowRef(initSchema || DEFAULT_PAGE_SCHEMA);
 
   console.log(schema);
   window.schema = schema.value;
 
-  setTimeout(() => {
-    schema.value.children[0].props.content = Date.now();
-    window.SimulatorRenderer.updateSchema();
-  }, 1000);
+  // setTimeout(() => {
+  //   schema.value.children[0].props.content = Date.now();
+  //   window.SimulatorRenderer.updateSchema();
+  // }, 1000);
 
   watch(
     schema,

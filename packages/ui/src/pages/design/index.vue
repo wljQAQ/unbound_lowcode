@@ -26,6 +26,8 @@ engine.use(materialPanelPlugin());
 engine.use(vueDesignCanvasPlugin());
 
 engine.use(setterPlugin());
+
+window.engine = engine;
 </script>
 
 <template>

@@ -1,17 +1,13 @@
 <script setup lang="tsx">
 import { shallowRef, nextTick } from 'vue-demi';
-import { useDrop, useEngineContext } from '@unbound_lowcode/shared';
-import { MATERIAL_DESIGN_DND_TYPE } from '@unbound_lowcode/constants';
-import { MaterialItemMeta } from '@unbound_lowcode/types';
+import { useEngineContext, useDndContextInjector } from '@unbound_lowcode/shared';
 
 const engineCtx = useEngineContext();
 const iframeRef = shallowRef<HTMLIFrameElement | null>(null);
-
+const dndCtx = useDndContextInjector();
+engineCtx.dnd = dndCtx;
 nextTick(async () => {
-  const renderer = await engineCtx.canvas.renderSimulator(iframeRef.value!, engineCtx);
-  renderer.setSchema(engineCtx.page.schema);
-  // renderer.setMaterialsMap(engineCtx.material.materialsMap);
-  // console.log(engineCtx);
+  await engineCtx.canvas.renderSimulator(iframeRef.value!, engineCtx);
 });
 </script>
 

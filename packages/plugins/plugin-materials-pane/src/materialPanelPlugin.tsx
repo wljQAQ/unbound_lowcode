@@ -11,7 +11,7 @@ export const materialPanelPlugin: ICreateBaseEnginePlugin = () => {
       skeleton.add({
         area: 'leftArea',
         type: '',
-        name: 'test',
+        name: 'material',
         content: markRaw(<MaterialsPane></MaterialsPane>),
         props: {
           title: '物料库',

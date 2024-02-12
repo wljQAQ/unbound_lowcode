@@ -8,7 +8,7 @@ import { shallowRef, ShallowRef, ref } from 'vue-demi';
 const ctx = useEngineContext();
 const { materialGroupList, handleSearchMaterial } = useMaterial(ctx?.material);
 
-const { hoverBtnCurrent, onEnterBtn, onLeaveBtn, onDblClickBtn } = useMaterialsButton();
+const { hoverBtnCurrent, onEnterBtn, onLeaveBtn, onDblClickBtn, onDragStart } = useMaterialsButton();
 
 //需要把 物料库的所有分类都整合到一起比较好操作
 function useMaterial(material: MaterialModel | undefined) {
@@ -66,18 +66,24 @@ function useMaterialsButton() {
   function onDblClickBtn(item: MaterialItemMeta) {
     const schema = ctx.material.getSchemaByNameAndPkg(item);
     if (!schema) return;
-    const node = ctx.node.createNode(schema);
-    const test = ctx.page.insertNodeToPage(node!);
-    // ctx.canvas.simulatorRenderer?.setSchema(test);
+  }
+
+  //TODO
+  function onDragStart() {
+    setTimeout(() => {
+      window.closePanel(null);
+    }, 200);
   }
 
   return {
     hoverBtnCurrent,
     onEnterBtn,
     onLeaveBtn,
-    onDblClickBtn
+    onDblClickBtn,
+    onDragStart
   };
 }
+//TODO: 这里需要优化
 </script>
 
 <template>
@@ -94,7 +100,7 @@ function useMaterialsButton() {
         <!-- 组件 -->
         <n-grid v-for="component in group.children" :key="component.meta.componentName" cols="2" x-gap="10" y-gap="10">
           <n-gi>
-            <use-drag-component :options="{ item: component, type: MATERIAL_DESIGN_DND_TYPE }">
+            <use-drag-component :options="{ item: component, type: MATERIAL_DESIGN_DND_TYPE }" @dragstart="onDragStart">
               <n-button
                 class="w-full justify-initial"
                 :size="'small'"

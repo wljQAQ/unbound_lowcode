@@ -1,12 +1,11 @@
-import type { Ref, ShallowRef } from 'vue-demi';
+import type { App, ShallowRef } from 'vue-demi';
 import { IPublicPageSchema, IPublicMaterialsMap } from '.';
 import { Engine } from '../Engine';
 export interface SimulatorRenderer {
   run(engine: Engine): void;
-  schema: Ref<IPublicPageSchema | null>;
-  materialsMap: ShallowRef<IPublicMaterialsMap | null>;
-  setSchema(schema: IPublicPageSchema): void;
-  setMaterialsMap(materialsMap: IPublicMaterialsMap): void;
+  mount(engine: Engine): void;
+  app: ShallowRef<App<Element> | null>;
+  unmount(): void;
 }
 
 export interface CanvasModel {

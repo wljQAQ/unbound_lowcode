@@ -1,5 +1,6 @@
 import { App } from 'vue-demi';
 import { MaterialModel, SkeletonModel, PageModel, NodeModel, CanvasModel } from '.';
+import { DndManager } from '@unbound_lowcode/shared/src/useDnD/types';
 
 export type ICreateBaseEnginePlugin = () => IBaseEnginePlugin;
 
@@ -19,4 +20,5 @@ export interface Engine {
   canvas: CanvasModel;
   use(plugin: IBaseEnginePlugin, options?: any): Engine;
   install(app: App): void;
+  dnd: DndManager;
 }

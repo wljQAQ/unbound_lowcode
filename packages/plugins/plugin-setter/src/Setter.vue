@@ -1,5 +1,5 @@
 <script setup lang="tsx">
-import { computed } from 'vue-demi';
+import { computed, reactive } from 'vue-demi';
 import { NTabs, NTabPane } from 'naive-ui';
 import { useEngineContext } from '@unbound_lowcode/shared';
 import { useSetterProvider, SetterContext } from './context';
@@ -8,10 +8,7 @@ import StyleSetter from './components/StyleSetter/index.vue';
 
 const engineCtx = useEngineContext();
 
-const schema = computed(() => {
-  console.log(engineCtx.node.currentNode.value);
-  return engineCtx.node.currentNode.value;
-});
+const schema = computed(() => reactive(JSON.parse(JSON.stringify(engineCtx.node.currentNode.value))));
 const setter = computed(() => engineCtx.node.getNodeSetter());
 const meta = computed(() => engineCtx.node.getNodeMeta());
 

@@ -1,4 +1,16 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useEngineContext } from '@unbound_lowcode/shared';
+import { IPublicPageSchema } from '@unbound_lowcode/types';
+
+interface Props {
+  schema: IPublicPageSchema;
+}
+
+const props = defineProps<Props>();
+
+const engineCtx = useEngineContext();
+engineCtx.node.addNodeMap(props.schema, null);
+</script>
 
 <template>
   <div>

@@ -8,5 +8,5 @@ export function useDndContextProvider(context: DndManager) {
 }
 
 export function useDndContextInjector() {
-  return inject<DndManager>(DndContextSymbol);
+  return inject<DndManager>(DndContextSymbol)!;
 }

@@ -1,23 +1,15 @@
 import { CanvasModel, SimulatorRenderer } from '@unbound_lowcode/types';
 
 export function useCanvasModel(): CanvasModel {
-  //主机  用来与模拟器进行交互
+  //模拟器进行交互
   return {
     simulatorRenderer: null,
     async renderSimulator(iframeRef, engineCtx) {
       const doc = iframeRef.contentDocument!;
       const win = iframeRef.contentWindow!;
 
+      win.engine = engineCtx;
       this.simulatorRenderer = await this.createIframe(iframeRef);
-      this.simulatorRenderer.run(engineCtx);
-
-      win.addEventListener('drop', () => {
-        console.log('drop');
-      });
-      win.addEventListener('dragover', e => {
-        e.preventDefault();
-        console.log('over');
-      });
 
       return this.simulatorRenderer;
     },
@@ -49,6 +41,7 @@ export function useCanvasModel(): CanvasModel {
       return new Promise(resolve => {
         const loaded = (e: CustomEvent<SimulatorRenderer>) => {
           resolve(e.detail);
+          console.log(e.detail);
           window.removeEventListener('simulatorMounted', loaded as EventListener);
         };
 

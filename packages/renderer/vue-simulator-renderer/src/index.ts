@@ -1,11 +1,5 @@
 import { test } from '@unbound_lowcode/vue-renderer';
-import Simulator from './Simulator.ts';
+import { simulatorRenderer } from './Simulator.ts';
 
-window.SimulatorRenderer = Simulator;
-window.dispatchEvent(
-  new CustomEvent('simulatorMounted', {
-    detail: Simulator
-  })
-);
-
-export default Simulator;
+simulatorRenderer.run(window.engine);
+export default simulatorRenderer;

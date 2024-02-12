@@ -36,6 +36,7 @@ export interface MaterialItemMeta {
   title: string;
   packageName?: string;
   description?: string;
+  isContainer?: boolean;
   document?: string;
   screenShot?: string;
   componentName?: string;

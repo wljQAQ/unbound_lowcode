@@ -4,36 +4,30 @@ import { useEventListener, unrefElement } from '@vueuse/core';
 import { useDndContextInjector } from '../DndContext';
 import { DndManager } from '../types';
 
-export function useDrop(options: DropOptions) {
-  const { el, accept, drop } = options;
-  const dndContext = useDndContextInjector();
+//这边加个ctx是为了兼容异步的情况
+export function useDrop(options: DropOptions, ctx: DndManager) {
+  const { el, accept, drop, dragover } = options;
+  const dndContext = ctx || useDndContextInjector();
   const init = async () => {
     await nextTick();
     const dom = unrefElement(el);
-
     if (!dom) return;
     //iframe元素需要特殊处理
 
-    if (dom instanceof HTMLIFrameElement) {
-      dom.onload = () => {
-        registerEvent(dom.contentDocument!);
-      };
-      return;
-    }
     registerEvent(dom);
   };
 
   function registerEvent(el: HTMLElement | Window | Document) {
-    console.log(el);
-    useEventListener(el, 'drop', e => {
-      console.log(1111211, dndContext);
+    useEventListener(el, 'drop', (e: MouseEvent) => {
       const type = dndContext?.getType();
       if (type !== accept || (Array.isArray(accept) && accept.find(i => i !== type))) return;
-
-      drop?.(dndContext as DndManager);
+      drop?.(e, dndContext as DndManager);
     });
 
-    useEventListener(el, 'dragover', e => e.preventDefault());
+    useEventListener(el, 'dragover', (e: MouseEvent) => {
+      e.preventDefault();
+      dragover?.(e, dndContext as DndManager);
+    });
   }
 
   init();

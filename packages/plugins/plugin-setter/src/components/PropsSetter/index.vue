@@ -18,9 +18,8 @@ function copyId() {
   success('复制成功');
 }
 
-function onChange(val) {
-  // console.log(ctx.page.schema);
-  // ctx.canvas.simulatorRenderer?.setSchema(ctx.page.schema);
+function onChange() {
+  ctx.node.updateNode(schema.value.id, schema.value);
 }
 </script>
 
@@ -43,7 +42,7 @@ function onChange(val) {
       <n-collapse-item title="基础属性" name="1">
         <template v-for="s in setter.props">
           <config-item v-bind="s">
-            <component :is="setterMap.StringSetter" :setter="s" :schema="schema" ></component>
+            <component :is="setterMap.StringSetter" :setter="s" :schema="schema" @update:value="onChange"></component>
           </config-item>
         </template>
       </n-collapse-item>

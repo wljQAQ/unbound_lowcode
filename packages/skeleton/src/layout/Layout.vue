@@ -13,6 +13,8 @@ onClickOutside(leftAreaRef, () => {
   if (!skeletonContext || skeletonContext.currentLeftPane.value?.props?.fix) return;
   skeletonContext.setCurrentLeftPane(null);
 });
+
+window.closePanel = skeletonContext.setCurrentLeftPane;
 </script>
 
 <template>

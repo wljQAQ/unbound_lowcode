@@ -10,8 +10,6 @@ function loadMaterial(): Materials {
     eager: true
   });
 
-  console.log(groupModules, 111);
-
   const componentsMap: Materials['componentsMap'] = {};
   const componentsGroupMap: Materials['componentsGroupMap'] = {};
   const componentsMetaMap: Materials['componentsMetaMap'] = {};

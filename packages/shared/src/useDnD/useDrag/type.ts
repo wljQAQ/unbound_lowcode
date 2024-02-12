@@ -6,4 +6,5 @@ export interface DragOptions {
   item?: unknown;
   effectAllowed?: DataTransfer['effectAllowed'];
   dataType?: string | string[] | Symbol | Symbol[];
+  dragstart?: (e: MouseEvent) => void;
 }

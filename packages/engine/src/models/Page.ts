@@ -14,20 +14,19 @@ const DEFAULT_PAGE_SCHEMA: IPublicPageSchema = {
   dataSource: {},
   route: '/',
   methods: {},
-  children: [
-    {
-      id: 'Node_Jgeod7R',
-      componentName: 'NButton',
-      packageName: 'NaiveUI',
-      props: {
-        content: '测试按钮'
-      }
-    }
-  ]
+  children: []
 };
 
 export function usePageModel(initSchema?: IPublicPageSchema): PageModel {
   const schema = shallowRef(initSchema || DEFAULT_PAGE_SCHEMA);
+
+  watch(
+    schema,
+    node => {
+      console.log(node, '工作台的schema变化');
+    },
+    { deep: true }
+  );
 
   return {
     schema: schema.value,

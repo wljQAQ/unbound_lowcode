@@ -18,7 +18,10 @@ function copyId() {
   success('复制成功');
 }
 
+console.log(setterMap, 'setterMap');
+
 function onChange() {
+  console.log(arguments);
   ctx.node.updateNode(schema.value.id, schema.value);
 }
 </script>
@@ -42,12 +45,18 @@ function onChange() {
       <n-collapse-item title="基础属性" name="1">
         <template v-for="s in setter.props">
           <config-item v-bind="s">
-            <component :is="setterMap.StringSetter" :setter="s" :schema="schema" @update:value="onChange"></component>
+            <component
+              :is="setterMap[s.setter.componentName]"
+              :setter="s"
+              :schema="schema"
+              @update:value="onChange"
+              v-bind="s.setter.props || {}"
+            />
           </config-item>
         </template>
       </n-collapse-item>
       <n-collapse-item title="高级属性" name="2">
-        <div>很好</div>
+        <div>很好222</div>
       </n-collapse-item>
       <n-collapse-item title="事件" name="3">
         <div>真棒</div>

@@ -26,10 +26,12 @@ export interface MaterialItemSetter {
 
 export interface SetterProp {
   title: string;
-  propType: string;
-  description: string;
-  defaultValue: string;
   name: string;
+  setter: {
+    componentName: string;
+    props?: Object;
+  };
+  description: string;
 }
 
 export interface MaterialItemMeta {

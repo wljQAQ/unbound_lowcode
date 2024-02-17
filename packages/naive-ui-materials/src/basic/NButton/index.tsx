@@ -33,9 +33,61 @@ export default {
       {
         name: 'content',
         title: '内容',
-        propType: 'string',
         description: '字段:children',
-        defaultValue: '按钮'
+        setter: {
+          componentName: 'StringSetter'
+        }
+      },
+      {
+        name: 'size',
+        title: '按钮尺寸',
+        description: '字段:size',
+        setter: {
+          componentName: 'RadioSetter',
+          props: {
+            size: 'small',
+            options: [
+              { label: 'small', value: 'small' },
+              { label: 'medium', value: 'medium' },
+              { label: 'large', value: 'large' }
+            ]
+          }
+        }
+      },
+      {
+        name: 'type',
+        title: '按钮类型',
+        description: '字段:size',
+        setter: {
+          componentName: 'SelectSetter',
+          props: {
+            options: [
+              { label: 'primary', value: 'primary' },
+              { label: 'tertiary', value: 'tertiary' },
+              { label: 'default', value: 'default' },
+              { label: 'success', value: 'success' },
+              { label: 'info', value: 'info' },
+              { label: 'warning', value: 'warning' },
+              { label: 'error', value: 'error' }
+            ]
+          }
+        }
+      },
+      {
+        name: 'disabled',
+        title: '禁用',
+        description: '字段:disabled',
+        setter: {
+          componentName: 'BooleanSetter'
+        }
+      },
+      {
+        name: 'text',
+        title: '文本按钮',
+        description: '字段:text',
+        setter: {
+          componentName: 'BooleanSetter'
+        }
       }
     ]
   },
